@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3qm-7p-EFv">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main Menu View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainMenuViewController" customModule="Life_Giver" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Play GS" translatesAutoresizingMaskIntoConstraints="NO" id="swE-Pc-Mtw">
+                                <rect key="frame" x="170" y="432" width="74" height="86"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="CPh-AO-xWv" appends="YES" id="UEF-jH-5oA"/>
+                                </connections>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cog GS" translatesAutoresizingMaskIntoConstraints="NO" id="4Ur-Ag-XkW">
+                                <rect key="frame" x="164" y="578" width="86" height="86"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Xp8-AY-xat" appends="YES" id="MGW-I4-PWi"/>
+                                </connections>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNL-XB-8fU">
+                                <rect key="frame" x="100.5" y="126" width="213" height="186"/>
+                                <string key="text">LIFE
+GIVER</string>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="80"/>
+                                <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="4Ur-Ag-XkW" firstAttribute="top" secondItem="swE-Pc-Mtw" secondAttribute="bottom" constant="60" id="BGH-1w-rRF"/>
+                            <constraint firstItem="swE-Pc-Mtw" firstAttribute="top" secondItem="WNL-XB-8fU" secondAttribute="bottom" constant="120" id="Cmq-O1-4Qe"/>
+                            <constraint firstItem="WNL-XB-8fU" firstAttribute="centerX" secondItem="swE-Pc-Mtw" secondAttribute="centerX" id="Do9-q9-Oy1"/>
+                            <constraint firstItem="4Ur-Ag-XkW" firstAttribute="centerX" secondItem="swE-Pc-Mtw" secondAttribute="centerX" id="XkA-Ov-DYx"/>
+                            <constraint firstItem="swE-Pc-Mtw" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ZSW-7s-hwk"/>
+                            <constraint firstItem="swE-Pc-Mtw" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fTY-xo-3ii"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="h4T-qj-zS7"/>
+                    <connections>
+                        <outlet property="imgCog" destination="4Ur-Ag-XkW" id="5Mr-mj-EM4"/>
+                        <outlet property="imgPlay" destination="swE-Pc-Mtw" id="Sll-b3-SWW"/>
+                        <outlet property="lblTitle" destination="WNL-XB-8fU" id="tEh-uu-29G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Xp8-AY-xat">
+                    <connections>
+                        <segue destination="37s-w1-qmd" kind="show" id="jQJ-yH-aec"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="CPh-AO-xWv">
+                    <connections>
+                        <segue destination="i8X-65-KfW" kind="presentation" id="CUo-O7-ZLu"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="957.97101449275374" y="20.758928571428569"/>
+        </scene>
+        <!--LevelSelection-->
+        <scene sceneID="jja-TI-eHA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LevelSelection" id="i8X-65-KfW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gbl-4m-duQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1756" y="-165"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="61V-yX-7LB">
+            <objects>
+                <tableViewController id="37s-w1-qmd" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AhC-Pj-k7a">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="KR2-vd-xwp">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KR2-vd-xwp" id="b3g-nj-lwD">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="37s-w1-qmd" id="foU-hT-jYQ"/>
+                            <outlet property="delegate" destination="37s-w1-qmd" id="yE7-qt-oqE"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gar-cc-uKD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1826" y="388"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nyM-cU-ygw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3qm-7p-EFv" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4aO-Hf-utH">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Zre-Te-Vsw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e8F-RM-UYa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="47.826086956521742" y="20.758928571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Cog GS" width="86" height="86"/>
+        <image name="Play GS" width="74" height="86"/>
+    </resources>
+</document>

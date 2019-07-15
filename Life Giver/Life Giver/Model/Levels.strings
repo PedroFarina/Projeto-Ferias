@@ -1,0 +1,33 @@
+/*
+ Levels.strings
+ Life Giver
+ 
+ Created by Pedro Giuliano Farina on 15/07/19.
+ Copyright © 2019 Pedro Giuliano Farina. All rights reserved.
+ */
+
+/*
+ 
+ 7x15
+ b -> blue apple
+ B -> blue vase
+ e -> empty
+ g -> green apple
+ G -> green vase
+ r -> red apple
+ R -> red vase
+ W -> water
+ V -> normal vase
+ 
+ 
+ 1 -> glass obstacle
+ 5 -> breaking glass
+ 9 -> broke glass
+ 
+ + 1 -> red apple behind
+ + 2 -> green apple behind
+ + 3 -> blue apple behind
+ 
+ */
+
+"Level 5" = "g1WWW\n11eee12\n\n\n\n\n\neee4\n\n\n\neeRGBee";
