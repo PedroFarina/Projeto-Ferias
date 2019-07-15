@@ -32,6 +32,7 @@
 		02BE864622DCF54B009431BC /* DynamicShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE864322DCF54B009431BC /* DynamicShapeView.swift */; };
 		02BE864722DCF54B009431BC /* AffectedByDynamics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE864422DCF54B009431BC /* AffectedByDynamics.swift */; };
 		02BE864822DCF54B009431BC /* DynamicImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE864522DCF54B009431BC /* DynamicImageView.swift */; };
+		02BE864C22DD02AC009431BC /* ModelStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE864B22DD02AC009431BC /* ModelStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		02BE864322DCF54B009431BC /* DynamicShapeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicShapeView.swift; sourceTree = "<group>"; };
 		02BE864422DCF54B009431BC /* AffectedByDynamics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AffectedByDynamics.swift; sourceTree = "<group>"; };
 		02BE864522DCF54B009431BC /* DynamicImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicImageView.swift; sourceTree = "<group>"; };
+		02BE864B22DD02AC009431BC /* ModelStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				02BE863022DCDA6A009431BC /* Levels.strings */,
 				02BE862222DC42B6009431BC /* Tutorials.strings */,
 				02BE862622DC5251009431BC /* ModelController.swift */,
+				02BE864B22DD02AC009431BC /* ModelStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				02BE863522DCDFE9009431BC /* Level+CoreDataProperties.swift in Sources */,
 				02BE864122DCF517009431BC /* DynamicBehaviorManager.swift in Sources */,
 				02BE863D22DCF517009431BC /* UIContact.swift in Sources */,
+				02BE864C22DD02AC009431BC /* ModelStatus.swift in Sources */,
 				0276DE1122DBD0BF00CEC4D5 /* AppDelegate.swift in Sources */,
 				02BE864722DCF54B009431BC /* AffectedByDynamics.swift in Sources */,
 			);
