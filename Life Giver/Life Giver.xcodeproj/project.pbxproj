@@ -33,6 +33,9 @@
 		02BE864722DCF54B009431BC /* AffectedByDynamics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE864422DCF54B009431BC /* AffectedByDynamics.swift */; };
 		02BE864822DCF54B009431BC /* DynamicImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE864522DCF54B009431BC /* DynamicImageView.swift */; };
 		02BE864C22DD02AC009431BC /* ModelStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE864B22DD02AC009431BC /* ModelStatus.swift */; };
+		02BE864E22DD134C009431BC /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE864D22DD134C009431BC /* NotificationHandler.swift */; };
+		02BE865122DD13F5009431BC /* MyNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE865022DD13F5009431BC /* MyNotification.swift */; };
+		02BE865322DD1B74009431BC /* AppDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE865222DD1B74009431BC /* AppDelegateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +67,9 @@
 		02BE864422DCF54B009431BC /* AffectedByDynamics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AffectedByDynamics.swift; sourceTree = "<group>"; };
 		02BE864522DCF54B009431BC /* DynamicImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicImageView.swift; sourceTree = "<group>"; };
 		02BE864B22DD02AC009431BC /* ModelStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelStatus.swift; sourceTree = "<group>"; };
+		02BE864D22DD134C009431BC /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
+		02BE865022DD13F5009431BC /* MyNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotification.swift; sourceTree = "<group>"; };
+		02BE865222DD1B74009431BC /* AppDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,13 +118,14 @@
 		02BE860F22DC30A4009431BC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				02BE863222DCDFE9009431BC /* Level+CoreDataClass.swift */,
-				02BE863322DCDFE9009431BC /* Level+CoreDataProperties.swift */,
-				0276DE1722DBD0BF00CEC4D5 /* Life_Giver.xcdatamodeld */,
-				02BE863022DCDA6A009431BC /* Levels.strings */,
-				02BE862222DC42B6009431BC /* Tutorials.strings */,
+				0276DE2922DBD35C00CEC4D5 /* GeneralProperties.swift */,
 				02BE862622DC5251009431BC /* ModelController.swift */,
 				02BE864B22DD02AC009431BC /* ModelStatus.swift */,
+				0276DE1722DBD0BF00CEC4D5 /* Life_Giver.xcdatamodeld */,
+				02BE863222DCDFE9009431BC /* Level+CoreDataClass.swift */,
+				02BE863322DCDFE9009431BC /* Level+CoreDataProperties.swift */,
+				02BE863022DCDA6A009431BC /* Levels.strings */,
+				02BE862222DC42B6009431BC /* Tutorials.strings */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -155,7 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				02BE863622DCF4A5009431BC /* UIGameKit */,
-				0276DE2922DBD35C00CEC4D5 /* GeneralProperties.swift */,
+				02BE864F22DD13E9009431BC /* Notification */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -189,6 +196,16 @@
 				02BE864322DCF54B009431BC /* DynamicShapeView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		02BE864F22DD13E9009431BC /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				02BE864D22DD134C009431BC /* NotificationHandler.swift */,
+				02BE865022DD13F5009431BC /* MyNotification.swift */,
+				02BE865222DD1B74009431BC /* AppDelegateExtension.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,13 +294,16 @@
 				02BE863422DCDFE9009431BC /* Level+CoreDataClass.swift in Sources */,
 				0276DE1322DBD0BF00CEC4D5 /* MainMenuViewController.swift in Sources */,
 				02BE863E22DCF517009431BC /* DynamicAnimatorController.swift in Sources */,
+				02BE864E22DD134C009431BC /* NotificationHandler.swift in Sources */,
 				02BE862722DC5251009431BC /* ModelController.swift in Sources */,
 				02BE861F22DC3CFC009431BC /* LevelSelectionCollectionViewCell.swift in Sources */,
 				02BE863522DCDFE9009431BC /* Level+CoreDataProperties.swift in Sources */,
+				02BE865122DD13F5009431BC /* MyNotification.swift in Sources */,
 				02BE864122DCF517009431BC /* DynamicBehaviorManager.swift in Sources */,
 				02BE863D22DCF517009431BC /* UIContact.swift in Sources */,
 				02BE864C22DD02AC009431BC /* ModelStatus.swift in Sources */,
 				0276DE1122DBD0BF00CEC4D5 /* AppDelegate.swift in Sources */,
+				02BE865322DD1B74009431BC /* AppDelegateExtension.swift in Sources */,
 				02BE864722DCF54B009431BC /* AffectedByDynamics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
