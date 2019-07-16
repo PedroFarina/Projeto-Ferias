@@ -22,6 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationCenter.delegate = self
         
         UIApplication.shared.applicationIconBadgeNumber = 0
+        
+        let defaults = UserDefaults.standard
+        if defaults.integer(forKey: GeneralProperties.SFXKey) == 0{
+            defaults.set(101, forKey: GeneralProperties.SFXKey)
+            GeneralProperties.SFXValue = 101
+        }
+        if defaults.integer(forKey: GeneralProperties.BGMKey) == 0{
+            defaults.set(101, forKey: GeneralProperties.BGMKey)
+            GeneralProperties.BGMValue = 101
+        }
         return true
     }
 
@@ -46,6 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
+        let defaults = UserDefaults.standard
+        defaults.set(GeneralProperties.SFXValue, forKey: GeneralProperties.SFXKey)
+        defaults.set(GeneralProperties.BGMValue, forKey: GeneralProperties.BGMKey)
+        defaults.set(GeneralProperties.DautonismoValue, forKey: GeneralProperties.DautonismoKey)
         self.saveContext()
     }
 

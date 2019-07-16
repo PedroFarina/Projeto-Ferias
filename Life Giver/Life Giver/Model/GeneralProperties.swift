@@ -12,6 +12,9 @@ public class GeneralProperties{
     }
     
     private static let gameDone:String = "GameFinished"
+    public static let SFXKey:String = "SFX"
+    public static let BGMKey:String = "BGM"
+    public static let DautonismoKey:String = "Dautonismo"
     
     private static let defaults = UserDefaults.standard
     private static var _hasColors:Bool = defaults.bool(forKey: gameDone)
@@ -26,9 +29,14 @@ public class GeneralProperties{
         }
     }
     
+    public static var SFXValue:Int = defaults.integer(forKey: SFXKey)
+    public static var BGMValue:Int = defaults.integer(forKey: BGMKey)
+    public static var DautonismoValue:Bool = defaults.bool(forKey: DautonismoKey)
+    
     private static func updatePaths(){
         if hasColors{
             redColor = #colorLiteral(red: 0.7490196078, green: 0.1764705882, blue: 0.1294117647, alpha: 1)
+            blueColor = #colorLiteral(red: 0.1921568627, green: 0.4235294118, blue: 0.6901960784, alpha: 1)
             lightblueColor = #colorLiteral(red: 0.1294117647, green: 0.6980392157, blue: 0.7490196078, alpha: 1)
             bronzeColor = #colorLiteral(red: 0.6901960784, green: 0.5529411765, blue: 0.3411764706, alpha: 1)
             silverColor = #colorLiteral(red: 0.4588235294, green: 0.5254901961, blue: 0.5725490196, alpha: 1)
@@ -52,6 +60,7 @@ public class GeneralProperties{
         }
         else{
             redColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
+            blueColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             lightblueColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             bronzeColor = #colorLiteral(red: 0.5137254902, green: 0.5137254902, blue: 0.5137254902, alpha: 1)
             silverColor = #colorLiteral(red: 0.5137254902, green: 0.5137254902, blue: 0.5137254902, alpha: 1)
@@ -89,6 +98,7 @@ public class GeneralProperties{
     
     //MARK : Colors
     public private(set) static var redColor:UIColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
+    public private(set) static var blueColor:UIColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
     public private(set) static var lightblueColor:UIColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
     public private(set) static var bronzeColor:UIColor = #colorLiteral(red: 0.5137254902, green: 0.5137254902, blue: 0.5137254902, alpha: 1)
     public private(set) static var silverColor:UIColor = #colorLiteral(red: 0.5137254902, green: 0.5137254902, blue: 0.5137254902, alpha: 1)

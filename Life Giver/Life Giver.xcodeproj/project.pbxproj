@@ -14,6 +14,9 @@
 		0276DE1E22DBD0C000CEC4D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0276DE1C22DBD0C000CEC4D5 /* LaunchScreen.storyboard */; };
 		0276DE2822DBD2B900CEC4D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0276DE2722DBD2B900CEC4D5 /* Assets.xcassets */; };
 		0276DE2A22DBD35C00CEC4D5 /* GeneralProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0276DE2922DBD35C00CEC4D5 /* GeneralProperties.swift */; };
+		0295EC8E22DE45EC00FB041C /* SliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295EC8D22DE45EC00FB041C /* SliderTableViewCell.swift */; };
+		0295EC9022DE464400FB041C /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295EC8F22DE464400FB041C /* SwitchTableViewCell.swift */; };
+		0295EC9222DE4BF300FB041C /* ConfigurationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295EC9122DE4BF300FB041C /* ConfigurationTableViewController.swift */; };
 		02BE861622DC3283009431BC /* NewYorkExtraLarge-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02BE861522DC3283009431BC /* NewYorkExtraLarge-Regular.otf */; };
 		02BE861822DC3899009431BC /* LevelSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02BE861722DC3899009431BC /* LevelSelection.storyboard */; };
 		02BE861B22DC39ED009431BC /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE861A22DC39EC009431BC /* ShapeView.swift */; };
@@ -54,6 +57,9 @@
 		0276DE1F22DBD0C000CEC4D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0276DE2722DBD2B900CEC4D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0276DE2922DBD35C00CEC4D5 /* GeneralProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralProperties.swift; sourceTree = "<group>"; };
+		0295EC8D22DE45EC00FB041C /* SliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTableViewCell.swift; sourceTree = "<group>"; };
+		0295EC8F22DE464400FB041C /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
+		0295EC9122DE4BF300FB041C /* ConfigurationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationTableViewController.swift; sourceTree = "<group>"; };
 		02BE861522DC3283009431BC /* NewYorkExtraLarge-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewYorkExtraLarge-Regular.otf"; sourceTree = "<group>"; };
 		02BE861722DC3899009431BC /* LevelSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LevelSelection.storyboard; sourceTree = "<group>"; };
 		02BE861A22DC39EC009431BC /* ShapeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
@@ -156,6 +162,7 @@
 			children = (
 				0276DE1222DBD0BF00CEC4D5 /* MainMenuViewController.swift */,
 				02BE862422DC50B8009431BC /* LevelSelectionCollectionViewController.swift */,
+				0295EC9122DE4BF300FB041C /* ConfigurationTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -238,6 +245,8 @@
 				02BE865622DD1FA7009431BC /* Level.storyboard */,
 				02BE861A22DC39EC009431BC /* ShapeView.swift */,
 				02BE861E22DC3CFC009431BC /* LevelSelectionCollectionViewCell.swift */,
+				0295EC8D22DE45EC00FB041C /* SliderTableViewCell.swift */,
+				0295EC8F22DE464400FB041C /* SwitchTableViewCell.swift */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -324,6 +333,7 @@
 				02BE864622DCF54B009431BC /* DynamicShapeView.swift in Sources */,
 				0276DE1922DBD0BF00CEC4D5 /* Life_Giver.xcdatamodeld in Sources */,
 				02BE866922DD7D82009431BC /* Seed.swift in Sources */,
+				0295EC9222DE4BF300FB041C /* ConfigurationTableViewController.swift in Sources */,
 				0276DE2A22DBD35C00CEC4D5 /* GeneralProperties.swift in Sources */,
 				02BE863F22DCF517009431BC /* ContactDelegate.swift in Sources */,
 				02BE864022DCF517009431BC /* DynamicObjectFactory.swift in Sources */,
@@ -336,6 +346,8 @@
 				02BE866522DD7CED009431BC /* Apple.swift in Sources */,
 				02BE862722DC5251009431BC /* ModelController.swift in Sources */,
 				02BE861F22DC3CFC009431BC /* LevelSelectionCollectionViewCell.swift in Sources */,
+				0295EC8E22DE45EC00FB041C /* SliderTableViewCell.swift in Sources */,
+				0295EC9022DE464400FB041C /* SwitchTableViewCell.swift in Sources */,
 				02BE863522DCDFE9009431BC /* Level+CoreDataProperties.swift in Sources */,
 				02BE866722DD7D72009431BC /* Vase.swift in Sources */,
 				02BE865122DD13F5009431BC /* MyNotification.swift in Sources */,

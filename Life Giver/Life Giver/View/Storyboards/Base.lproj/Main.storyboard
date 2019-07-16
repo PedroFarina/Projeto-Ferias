@@ -81,22 +81,82 @@ GIVER</string>
             </objects>
             <point key="canvasLocation" x="1756" y="-165"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Configurações-->
         <scene sceneID="61V-yX-7LB">
             <objects>
-                <tableViewController id="37s-w1-qmd" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AhC-Pj-k7a">
+                <tableViewController id="37s-w1-qmd" customClass="ConfigurationTableViewController" customModule="Life_Giver" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AhC-Pj-k7a">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="KR2-vd-xwp">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="soundCell" id="KR2-vd-xwp" customClass="SliderTableViewCell" customModule="Life_Giver" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KR2-vd-xwp" id="b3g-nj-lwD">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="101" minimumValueImage="quieter icon" maximumValueImage="louder icon" translatesAutoresizingMaskIntoConstraints="NO" id="59f-Wu-iAK">
+                                            <rect key="frame" x="57.5" y="7" width="341.5" height="31"/>
+                                            <connections>
+                                                <action selector="changeOccur:" destination="KR2-vd-xwp" eventType="valueChanged" id="522-WA-flW"/>
+                                            </connections>
+                                        </slider>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qc5-eb-pQG">
+                                            <rect key="frame" x="16" y="11.5" width="33.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="59f-Wu-iAK" firstAttribute="centerY" secondItem="Qc5-eb-pQG" secondAttribute="centerY" id="0PT-Ww-cZq"/>
+                                        <constraint firstAttribute="trailing" secondItem="59f-Wu-iAK" secondAttribute="trailing" constant="17" id="0mO-Qb-7bJ"/>
+                                        <constraint firstItem="Qc5-eb-pQG" firstAttribute="leading" secondItem="b3g-nj-lwD" secondAttribute="leading" constant="16" id="KE5-nn-2Iz"/>
+                                        <constraint firstItem="59f-Wu-iAK" firstAttribute="leading" secondItem="Qc5-eb-pQG" secondAttribute="trailing" constant="10" id="TjA-hL-uKo"/>
+                                        <constraint firstItem="Qc5-eb-pQG" firstAttribute="centerY" secondItem="b3g-nj-lwD" secondAttribute="centerY" id="e6e-bU-FVF"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblTitle" destination="Qc5-eb-pQG" id="ar3-av-Aet"/>
+                                    <outlet property="slider" destination="59f-Wu-iAK" id="8rE-gP-P1Y"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="switchCell" id="BX7-I4-C7L" customClass="SwitchTableViewCell" customModule="Life_Giver" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BX7-I4-C7L" id="8Sd-bI-ZbD">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFK-cn-jcE">
+                                            <rect key="frame" x="16" y="11.5" width="33.5" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="320" id="CSd-td-szF"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7SX-1f-tY1">
+                                            <rect key="frame" x="349" y="6.5" width="51" height="31"/>
+                                            <connections>
+                                                <action selector="onOffOccur:" destination="BX7-I4-C7L" eventType="valueChanged" id="cLU-qO-XTW"/>
+                                            </connections>
+                                        </switch>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="zFK-cn-jcE" firstAttribute="leading" secondItem="8Sd-bI-ZbD" secondAttribute="leading" constant="16" id="F7B-ze-23t"/>
+                                        <constraint firstAttribute="trailing" secondItem="7SX-1f-tY1" secondAttribute="trailing" constant="16" id="bA4-8f-uSd"/>
+                                        <constraint firstItem="7SX-1f-tY1" firstAttribute="centerY" secondItem="zFK-cn-jcE" secondAttribute="centerY" id="bxV-Ov-cdl"/>
+                                        <constraint firstItem="zFK-cn-jcE" firstAttribute="centerY" secondItem="8Sd-bI-ZbD" secondAttribute="centerY" id="fyf-yS-8Ad"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblTitle" destination="zFK-cn-jcE" id="GMf-ZH-a1a"/>
+                                    <outlet property="onOff" destination="7SX-1f-tY1" id="obf-dG-CGY"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -104,10 +164,11 @@ GIVER</string>
                             <outlet property="delegate" destination="37s-w1-qmd" id="yE7-qt-oqE"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Configurações" largeTitleDisplayMode="always" id="V9u-kM-IkK"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gar-cc-uKD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1826" y="388"/>
+            <point key="canvasLocation" x="1824.6376811594205" y="387.72321428571428"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nyM-cU-ygw">
@@ -131,5 +192,7 @@ GIVER</string>
     <resources>
         <image name="Cog GS" width="86" height="86"/>
         <image name="Play GS" width="74" height="86"/>
+        <image name="louder icon" width="25.5" height="22"/>
+        <image name="quieter icon" width="10.5" height="15.5"/>
     </resources>
 </document>

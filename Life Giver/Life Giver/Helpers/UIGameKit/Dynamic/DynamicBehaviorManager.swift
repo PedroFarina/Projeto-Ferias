@@ -46,13 +46,13 @@ public class DynamicBehaviorManager{
         if object.affectedByGravity{
             self.gravityBehavior.addItem(object)
         }
-        if referenceBound && object.collisionBitMask == 0{
+        if referenceBound && object.collisionBitGroup == 0{
             let cvBehavior = UICollisionBehavior(items: [object])
             cvBehavior.translatesReferenceBoundsIntoBoundary = true
             animator.addBehavior(cvBehavior)
         }
         else{
-            let binaryReverse:String = String(String(object.collisionBitMask,  radix:2).reversed())
+            let binaryReverse:String = String(String(object.collisionBitGroup,  radix:2).reversed())
             checkCount(count: binaryReverse.count)
             
             var i:Int = 0
@@ -82,7 +82,7 @@ public class DynamicBehaviorManager{
         if object.affectedByGravity{
             gravityBehavior.removeItem(object)
         }
-        let binaryReverse:String = String(String(object.collisionBitMask,  radix:2).reversed())
+        let binaryReverse:String = String(String(object.collisionBitGroup,  radix:2).reversed())
         var i:Int = 0
         
         for c in binaryReverse{
