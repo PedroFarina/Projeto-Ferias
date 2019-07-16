@@ -12,6 +12,6 @@ public protocol AffectedByDynamics : UIView{
     var affectedByGravity:Bool { get }
     var stationary:Bool { get }
     var categoryBitMask:UInt32 { get }
-    var collisionBitMask:UInt32 { get }
+    var collisionBitGroup:UInt32 { get }
     var contactBitMask:UInt32 { get }
 }

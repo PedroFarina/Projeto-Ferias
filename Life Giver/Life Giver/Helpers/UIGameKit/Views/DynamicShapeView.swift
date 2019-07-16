@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable public class DynamicShapeView : ShapeView, AffectedByDynamics{
     @IBInspectable public var affectedByGravity: Bool = true
     @IBInspectable public var categoryBitMask: UInt32 = 1
-    @IBInspectable public var collisionBitMask: UInt32 =  ~0x0
+    @IBInspectable public var collisionBitGroup: UInt32 = 0
     @IBInspectable public var contactBitMask: UInt32 = 0
     @IBInspectable public var stationary: Bool = false
     
