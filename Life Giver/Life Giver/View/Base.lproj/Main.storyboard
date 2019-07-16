@@ -67,7 +67,7 @@ GIVER</string>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="CPh-AO-xWv">
                     <connections>
-                        <segue destination="i8X-65-KfW" kind="presentation" id="CUo-O7-ZLu"/>
+                        <segue destination="i8X-65-KfW" kind="show" id="CUo-O7-ZLu"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

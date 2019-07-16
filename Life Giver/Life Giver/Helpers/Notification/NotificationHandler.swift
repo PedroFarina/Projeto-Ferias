@@ -19,36 +19,40 @@ public class NotificationHandler{
         notificationCenter.requestAuthorization(options: options) {
             (didAllow, error) in
             if !didAllow {
-                permission = false
+                defaults.set(false, forKey: "notificationPermission")
             }
             else{
-                permission = true
+                defaults.set(true, forKey: "notificationPermission")
             }
         }
     }
     
     private static let defaults = UserDefaults.standard
     
-    private static var permission:Bool?
     private static let notificationCenter:UNUserNotificationCenter = UNUserNotificationCenter.current()
     private static var notifications:[MyNotification] = defaults.object(forKey: "Notifications") as? [MyNotification] ?? [MyNotification]()
     
     public static func handleNotification(response:UNNotificationResponse){
         var i = 0
+        var encontrado:Bool = false
         for notification in notifications{
             if notification.identifier == response.notification.request.identifier{
                 if let actions = notification.actions{
                     for action in actions{
                         if action.0 == response.actionIdentifier{
                             action.1()
-                            notifications.remove(at: i)
-                            defaults.set(notifications, forKey: "Notifications")
+                            encontrado =  true
                             break
                         }
                     }
                 }
             }
             i+=1
+        }
+        
+        if encontrado{
+            notifications.remove(at: i)
+            defaults.set(notifications, forKey: "Notifications")
         }
     }
     
@@ -57,13 +61,9 @@ public class NotificationHandler{
     }
     
     public static func notify(title:String, body:String, time:Double, sound:Bool, badges:Bool, actions:[(title:String, action:() -> Void, appReOpens:Bool)]?){
-        if let p = permission{
-            if !p{
-                return
-            }
-        }
-        else{
+        if !defaults.bool(forKey: "notificationPermission"){
             askPermission()
+            return
         }
         
         let df:DateFormatter = DateFormatter()

@@ -36,6 +36,7 @@
 		02BE864E22DD134C009431BC /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE864D22DD134C009431BC /* NotificationHandler.swift */; };
 		02BE865122DD13F5009431BC /* MyNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE865022DD13F5009431BC /* MyNotification.swift */; };
 		02BE865322DD1B74009431BC /* AppDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE865222DD1B74009431BC /* AppDelegateExtension.swift */; };
+		02BE865722DD1FA7009431BC /* Level.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02BE865622DD1FA7009431BC /* Level.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		02BE864D22DD134C009431BC /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		02BE865022DD13F5009431BC /* MyNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotification.swift; sourceTree = "<group>"; };
 		02BE865222DD1B74009431BC /* AppDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
+		02BE865622DD1FA7009431BC /* Level.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Level.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			children = (
 				0276DE1422DBD0BF00CEC4D5 /* Main.storyboard */,
 				02BE861722DC3899009431BC /* LevelSelection.storyboard */,
+				02BE865622DD1FA7009431BC /* Level.storyboard */,
 				02BE861A22DC39EC009431BC /* ShapeView.swift */,
 				02BE861E22DC3CFC009431BC /* LevelSelectionCollectionViewCell.swift */,
 			);
@@ -273,6 +276,7 @@
 				0276DE1622DBD0BF00CEC4D5 /* Main.storyboard in Resources */,
 				02BE862322DC42B6009431BC /* Tutorials.strings in Resources */,
 				02BE863122DCDA6A009431BC /* Levels.strings in Resources */,
+				02BE865722DD1FA7009431BC /* Level.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

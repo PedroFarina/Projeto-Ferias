@@ -14,7 +14,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Level Selection Collection View Controller-->
+        <!--Title-->
         <scene sceneID="X94-CN-DUE">
             <objects>
                 <collectionViewController id="c3o-jJ-t9h" customClass="LevelSelectionCollectionViewController" customModule="Life_Giver" customModuleProvider="target" sceneMemberID="viewController">
@@ -83,10 +83,11 @@
                             <outlet property="delegate" destination="c3o-jJ-t9h" id="kvZ-Kg-H2q"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" title="Title" id="Lce-sY-n8R"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jhA-YF-aWN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="253.62318840579712" y="107.8125"/>
+            <point key="canvasLocation" x="1163.768115942029" y="107.8125"/>
         </scene>
     </scenes>
 </document>

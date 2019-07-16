@@ -42,7 +42,7 @@ public class DynamicBehaviorManager{
         self.init(animator:animator, collisionDelegate:nil, translatesReferenceBoundsIntoBoundary:true)
     }
     
-    public func config(object:AffectedByDynamics){
+    public func config(_ object:AffectedByDynamics) -> UIBezierPath?{
         if object.affectedByGravity{
             self.gravityBehavior.addItem(object)
         }
@@ -58,11 +58,50 @@ public class DynamicBehaviorManager{
             var i:Int = 0
             for c in binaryReverse{
                 if c == "1"{
-                    collisionBehaviors[i].addItem(object)
+                    if !object.stationary{
+                        collisionBehaviors[i].addItem(object)
+                    }
+                    else{
+                        let path = UIBezierPath(rect: object.frame)
+                        collisionBehaviors[i].addBoundary(withIdentifier: path, for: path)
+                        return path
+                    }
+                    
                 }
                 i+=1
             }
         }
+        return nil
+    }
+    
+    public func remove(_ object:AffectedByDynamics){
+        remove(object, path: nil)
+    }
+    
+    public func remove(_ object:AffectedByDynamics, path:UIBezierPath?){
+        if object.affectedByGravity{
+            gravityBehavior.removeItem(object)
+        }
+        let binaryReverse:String = String(String(object.collisionBitMask,  radix:2).reversed())
+        var i:Int = 0
+        
+        for c in binaryReverse{
+            if c == "1"{
+                if !object.stationary{
+                    collisionBehaviors[i].removeItem(object)
+                }
+                else{
+                    guard let path = path else{
+                        return
+                    }
+                    collisionBehaviors[i].removeBoundary(withIdentifier: path)
+                }
+                
+            }
+            i+=1
+        }
+        
+        object.removeFromSuperview()
     }
     
     private func checkCount(count:Int){

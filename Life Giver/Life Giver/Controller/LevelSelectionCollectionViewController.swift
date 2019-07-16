@@ -25,7 +25,7 @@ public class LevelSelectionCollectionViewController : UICollectionViewController
     public override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell:UICollectionViewCell = UICollectionViewCell()
         if let lvCell = collectionView.dequeueReusableCell(withReuseIdentifier: "levelCell", for: indexPath) as? LevelSelectionCollectionViewCell{
-            lvCell.lblLevel.text = "\(levels[indexPath.row].id)"
+            lvCell.lblLevel.text = "\(levels[indexPath.row].id + 1)"
             lvCell.completionBadge.borderColor = GeneralProperties.lightblueColor
             switch levels[indexPath.row].completion{
             case 1:

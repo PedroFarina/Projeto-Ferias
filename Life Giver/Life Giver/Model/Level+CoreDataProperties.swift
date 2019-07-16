@@ -17,8 +17,8 @@ extension Level {
         return NSFetchRequest<Level>(entityName: "Level")
     }
 
-    @NSManaged public var state: String?
     @NSManaged public var completion: Int16
     @NSManaged public var id: Int16
+    @NSManaged public var state: String?
 
 }
