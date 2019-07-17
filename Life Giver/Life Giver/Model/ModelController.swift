@@ -68,14 +68,17 @@ public class ModelController{
             objLevel.id = Int16(i)
             objLevel.completion = 0
             objLevel.state = b
+            _levels.append(objLevel)
+        }
+        if context.hasChanges{
+            do{
+                try context.save()
+            }
+            catch{
+                fatalError("Não foi possível salvar os dados.")
+            }
         }
         
-        do{
-            try context.save()
-        }
-        catch{
-            fatalError("Não foi possível salvar os dados.")
-        }
     }
     
     class func shared() -> ModelController{

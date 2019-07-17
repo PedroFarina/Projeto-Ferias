@@ -21,6 +21,10 @@
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Play GS" translatesAutoresizingMaskIntoConstraints="NO" id="swE-Pc-Mtw">
                                 <rect key="frame" x="170" y="432" width="74" height="86"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="swE-Pc-Mtw" secondAttribute="height" multiplier="37:43" id="WgG-dB-pg3"/>
+                                    <constraint firstAttribute="height" constant="86" id="a5V-Oa-e5J"/>
+                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="CPh-AO-xWv" appends="YES" id="UEF-jH-5oA"/>
                                 </connections>
@@ -28,12 +32,16 @@
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cog GS" translatesAutoresizingMaskIntoConstraints="NO" id="4Ur-Ag-XkW">
                                 <rect key="frame" x="164" y="578" width="86" height="86"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4Ur-Ag-XkW" secondAttribute="height" multiplier="1:1" id="ecs-ef-emj"/>
+                                    <constraint firstAttribute="height" constant="86" id="pUi-H7-yhV"/>
+                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Xp8-AY-xat" appends="YES" id="MGW-I4-PWi"/>
                                 </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNL-XB-8fU">
-                                <rect key="frame" x="100.5" y="126" width="213" height="186"/>
+                                <rect key="frame" x="100.5" y="118" width="213" height="186"/>
                                 <string key="text">LIFE
 GIVER</string>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="80"/>
@@ -44,8 +52,9 @@ GIVER</string>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4Ur-Ag-XkW" firstAttribute="top" secondItem="swE-Pc-Mtw" secondAttribute="bottom" constant="60" id="BGH-1w-rRF"/>
-                            <constraint firstItem="swE-Pc-Mtw" firstAttribute="top" secondItem="WNL-XB-8fU" secondAttribute="bottom" constant="120" id="Cmq-O1-4Qe"/>
                             <constraint firstItem="WNL-XB-8fU" firstAttribute="centerX" secondItem="swE-Pc-Mtw" secondAttribute="centerX" id="Do9-q9-Oy1"/>
+                            <constraint firstItem="WNL-XB-8fU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="KbZ-6k-C4M"/>
+                            <constraint firstItem="swE-Pc-Mtw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="WNL-XB-8fU" secondAttribute="bottom" constant="50" id="LXK-mt-j70"/>
                             <constraint firstItem="4Ur-Ag-XkW" firstAttribute="centerX" secondItem="swE-Pc-Mtw" secondAttribute="centerX" id="XkA-Ov-DYx"/>
                             <constraint firstItem="swE-Pc-Mtw" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ZSW-7s-hwk"/>
                             <constraint firstItem="swE-Pc-Mtw" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fTY-xo-3ii"/>
@@ -55,7 +64,9 @@ GIVER</string>
                     <navigationItem key="navigationItem" id="h4T-qj-zS7"/>
                     <connections>
                         <outlet property="imgCog" destination="4Ur-Ag-XkW" id="5Mr-mj-EM4"/>
+                        <outlet property="imgCogHeight" destination="pUi-H7-yhV" id="jH4-a0-eDx"/>
                         <outlet property="imgPlay" destination="swE-Pc-Mtw" id="Sll-b3-SWW"/>
+                        <outlet property="imgPlayHeight" destination="a5V-Oa-e5J" id="Kd2-5G-V3V"/>
                         <outlet property="lblTitle" destination="WNL-XB-8fU" id="tEh-uu-29G"/>
                     </connections>
                 </viewController>

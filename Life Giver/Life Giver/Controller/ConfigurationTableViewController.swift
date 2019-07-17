@@ -74,16 +74,20 @@ public class ConfigurationTableViewController : UITableViewController{
         }
         else{
             if let switchCell = tableView.dequeueReusableCell(withIdentifier: "switchCell") as? SwitchTableViewCell{
-                switchCell.lblTitle.text = "Dautonismo"
-                switchCell.onOff.isOn = GeneralProperties.DautonismoValue
+                switchCell.lblTitle.text = "Daltonismo"
+                switchCell.onOff.isOn = GeneralProperties.DaltonismoValue
                 switchCell.onOffChanged = {
                     (uiSwitch) in
-                    GeneralProperties.DautonismoValue = uiSwitch.isOn
+                    GeneralProperties.DaltonismoValue = uiSwitch.isOn
                 }
                 colorables.append(switchCell.onOff)
                 cell = switchCell
             }
         }
         return cell
+    }
+    
+    public override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 43.5
     }
 }

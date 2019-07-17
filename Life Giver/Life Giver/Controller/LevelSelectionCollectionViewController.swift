@@ -27,6 +27,9 @@ public class LevelSelectionCollectionViewController : UICollectionViewController
         if let lvCell = collectionView.dequeueReusableCell(withReuseIdentifier: "levelCell", for: indexPath) as? LevelSelectionCollectionViewCell{
             lvCell.lblLevel.text = "\(levels[indexPath.row].id + 1)"
             lvCell.completionBadge.borderColor = GeneralProperties.lightblueColor
+            if indexPath.row != 0{
+                lvCell.isHidden = levels[indexPath.row - 1].completion == 0
+            }
             switch levels[indexPath.row].completion{
             case 1:
                 lvCell.completionBadge.fillColor = GeneralProperties.bronzeColor
@@ -43,7 +46,6 @@ public class LevelSelectionCollectionViewController : UICollectionViewController
             }
             cell = lvCell
         }
-        
         return cell
     }
 }

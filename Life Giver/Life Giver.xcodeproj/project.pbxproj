@@ -45,6 +45,7 @@
 		02BE866522DD7CED009431BC /* Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE866422DD7CED009431BC /* Apple.swift */; };
 		02BE866722DD7D72009431BC /* Vase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE866622DD7D72009431BC /* Vase.swift */; };
 		02BE866922DD7D82009431BC /* Seed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE866822DD7D82009431BC /* Seed.swift */; };
+		02E6541322DF7AE100FFE2B5 /* SizeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E6541222DF7AE100FFE2B5 /* SizeAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +89,7 @@
 		02BE866422DD7CED009431BC /* Apple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple.swift; sourceTree = "<group>"; };
 		02BE866622DD7D72009431BC /* Vase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vase.swift; sourceTree = "<group>"; };
 		02BE866822DD7D82009431BC /* Seed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seed.swift; sourceTree = "<group>"; };
+		02E6541222DF7AE100FFE2B5 /* SizeAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 			children = (
 				02BE863622DCF4A5009431BC /* UIGameKit */,
 				02BE864F22DD13E9009431BC /* Notification */,
+				02E6541222DF7AE100FFE2B5 /* SizeAdapter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				02BE863522DCDFE9009431BC /* Level+CoreDataProperties.swift in Sources */,
 				02BE866722DD7D72009431BC /* Vase.swift in Sources */,
 				02BE865122DD13F5009431BC /* MyNotification.swift in Sources */,
+				02E6541322DF7AE100FFE2B5 /* SizeAdapter.swift in Sources */,
 				02BE864122DCF517009431BC /* DynamicBehaviorManager.swift in Sources */,
 				02BE863D22DCF517009431BC /* UIContact.swift in Sources */,
 				02BE864C22DD02AC009431BC /* ModelStatus.swift in Sources */,

@@ -11,10 +11,12 @@ public class GeneralProperties{
     private init(){
     }
     
+    public static let iPhoneXRSize:CGSize = CGSize(width: 414, height: 896)
+    
     private static let gameDone:String = "GameFinished"
     public static let SFXKey:String = "SFX"
     public static let BGMKey:String = "BGM"
-    public static let DautonismoKey:String = "Dautonismo"
+    public static let DaltonismoKey:String = "Daltonismo"
     
     private static let defaults = UserDefaults.standard
     private static var _hasColors:Bool = defaults.bool(forKey: gameDone)
@@ -29,9 +31,36 @@ public class GeneralProperties{
         }
     }
     
-    public static var SFXValue:Int = defaults.integer(forKey: SFXKey)
-    public static var BGMValue:Int = defaults.integer(forKey: BGMKey)
-    public static var DautonismoValue:Bool = defaults.bool(forKey: DautonismoKey)
+    public static var SFXValue:Int = defaults.integer(forKey: SFXKey){
+        didSet{
+            defaults.set(SFXValue, forKey: SFXKey)
+        }
+    }
+    public static var BGMValue:Int = defaults.integer(forKey: BGMKey){
+        didSet{
+            defaults.set(BGMValue, forKey: BGMKey)
+        }
+    }
+    public static var DaltonismoValue:Bool = defaults.bool(forKey: DaltonismoKey){
+        didSet{
+            defaults.set(DaltonismoValue, forKey: DaltonismoKey)
+            if DaltonismoValue{
+                daltonismoSuSuffix = "Daltonismo"
+            }
+            else{
+                daltonismoSuSuffix = ""
+            }
+            updatePaths()
+        }
+    }
+    
+    private static var started:Bool = false
+    public static func start(){
+        if !started{
+            updatePaths()
+            started = true
+        }
+    }
     
     private static func updatePaths(){
         if hasColors{
@@ -43,17 +72,17 @@ public class GeneralProperties{
             goldColor = #colorLiteral(red: 0.9176470588, green: 0.6862745098, blue: 0.1098039216, alpha: 1)
             playPath = "\(playPrefix)"
             cogPath = "\(cogPrefix)"
-            redApplePath = "\(applePrefix) \(redColorSuffix)"
-            greenApplePath = "\(applePrefix) \(greenColorSuffix)"
-            blueApplePath = "\(applePrefix) \(blueColorSuffix)"
+            redApplePath = "\(applePrefix) \(redColorSuffix) \(daltonismoSuSuffix)"
+            greenApplePath = "\(applePrefix) \(greenColorSuffix) \(daltonismoSuSuffix)"
+            blueApplePath = "\(applePrefix) \(blueColorSuffix) \(daltonismoSuSuffix)"
             vasePath = "\(vasePrefix) Normal"
-            redVasePath = "\(vasePrefix) \(redColorSuffix)"
-            greenVasePath = "\(vasePrefix) \(greenColorSuffix)"
-            blueVasePath = "\(vasePrefix) \(blueColorSuffix)"
+            redVasePath = "\(vasePrefix) \(redColorSuffix) \(daltonismoSuSuffix)"
+            greenVasePath = "\(vasePrefix) \(greenColorSuffix) \(daltonismoSuSuffix)"
+            blueVasePath = "\(vasePrefix) \(blueColorSuffix) \(daltonismoSuSuffix)"
             dropletPath = "\(dropletPrefix)"
-            redSeedPath = "\(seedPrefix) \(redColorSuffix)"
-            greenSeedPath = "\(seedPrefix) \(greenColorSuffix)"
-            blueSeedPath = "\(seedPrefix) \(blueColorSuffix)"
+            redSeedPath = "\(seedPrefix) \(redColorSuffix) \(daltonismoSuSuffix)"
+            greenSeedPath = "\(seedPrefix) \(greenColorSuffix) \(daltonismoSuSuffix)"
+            blueSeedPath = "\(seedPrefix) \(blueColorSuffix) \(daltonismoSuSuffix)"
             glassPath = "\(glassPrefix) Normal"
             glassBreakingPath = "\(glassPrefix) Quebrando"
             glassBrokenPath = "\(glassPrefix) Quebrado"
@@ -96,36 +125,38 @@ public class GeneralProperties{
     private static let greenColorSuffix = "Verde"
     private static let blueColorSuffix = "Azul"
     
+    private static var daltonismoSuSuffix = ""
+    
     //MARK : Colors
-    public private(set) static var redColor:UIColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
-    public private(set) static var blueColor:UIColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
-    public private(set) static var lightblueColor:UIColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
-    public private(set) static var bronzeColor:UIColor = #colorLiteral(red: 0.5137254902, green: 0.5137254902, blue: 0.5137254902, alpha: 1)
-    public private(set) static var silverColor:UIColor = #colorLiteral(red: 0.5137254902, green: 0.5137254902, blue: 0.5137254902, alpha: 1)
-    public private(set) static var goldColor:UIColor = #colorLiteral(red: 0.5137254902, green: 0.5137254902, blue: 0.5137254902, alpha: 1)
+    public private(set) static var redColor:UIColor = UIColor()
+    public private(set) static var blueColor:UIColor = UIColor()
+    public private(set) static var lightblueColor:UIColor = UIColor()
+    public private(set) static var bronzeColor:UIColor = UIColor()
+    public private(set) static var silverColor:UIColor = UIColor()
+    public private(set) static var goldColor:UIColor = UIColor()
     //MARK : Play
-    public private(set) static var playPath:String = "\(playPrefix) \(grayStyleSuffix)"
+    public private(set) static var playPath:String = ""
     //MARK : Cog
-    public private(set) static var cogPath:String = "\(cogPrefix) \(grayStyleSuffix)"
+    public private(set) static var cogPath:String = ""
     //MARK : Apples
-    public private(set) static var redApplePath:String = "\(applePrefix) \(grayStyleSuffix)"
-    public private(set) static var greenApplePath:String = "\(applePrefix) \(grayStyleSuffix)"
-    public private(set) static var blueApplePath:String = "\(applePrefix) \(grayStyleSuffix)"
+    public private(set) static var redApplePath:String = ""
+    public private(set) static var greenApplePath:String = ""
+    public private(set) static var blueApplePath:String = ""
     //MARK : Vases
-    public private(set) static var vasePath:String = "\(vasePrefix) Normal \(grayStyleSuffix)"
-    public private(set) static var redVasePath:String = "\(vasePrefix) \(grayStyleSuffix)"
-    public private(set) static var greenVasePath:String = "\(vasePrefix) \(grayStyleSuffix)"
-    public private(set) static var blueVasePath:String = "\(vasePrefix) \(grayStyleSuffix)"
+    public private(set) static var vasePath:String = ""
+    public private(set) static var redVasePath:String = ""
+    public private(set) static var greenVasePath:String = ""
+    public private(set) static var blueVasePath:String = ""
     //MARK : Droplet
-    public private(set) static var dropletPath:String = "\(dropletPrefix) \(grayStyleSuffix)"
+    public private(set) static var dropletPath:String = ""
     //MARK : Seeds
-    public private(set) static var redSeedPath:String = "\(seedPrefix) \(grayStyleSuffix)"
-    public private(set) static var greenSeedPath:String = "\(seedPrefix) \(grayStyleSuffix)"
-    public private(set) static var blueSeedPath:String = "\(seedPrefix) \(grayStyleSuffix)"
+    public private(set) static var redSeedPath:String = ""
+    public private(set) static var greenSeedPath:String = ""
+    public private(set) static var blueSeedPath:String = ""
     //MARK : Glasses
-    public private(set) static var glassPath:String = "\(glassPrefix) Normal \(grayStyleSuffix)"
-    public private(set) static var glassBreakingPath:String = "\(glassPrefix) Quebrando \(grayStyleSuffix)"
-    public private(set) static var glassBrokenPath:String = "\(glassPrefix) Quebrado \(grayStyleSuffix)"
+    public private(set) static var glassPath:String = ""
+    public private(set) static var glassBreakingPath:String = ""
+    public private(set) static var glassBrokenPath:String = ""
     
     public static func enableColors(){
         defaults.set(true, forKey: gameDone)
