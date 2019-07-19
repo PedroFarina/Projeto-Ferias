@@ -20,12 +20,6 @@ public class ConfigurationTableViewController : UITableViewController{
         for view in colorables{
             view.awakeFromNib()
         }
-        
-        guard let navigationController = navigationController else{
-            return
-        }
-        
-        navigationController.navigationBar.tintColor = GeneralProperties.blueColor
     }
     
     public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

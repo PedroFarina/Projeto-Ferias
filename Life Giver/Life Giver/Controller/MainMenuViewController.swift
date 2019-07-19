@@ -31,7 +31,11 @@ class MainMenuViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let navigationController = navigationController else{
+            return
+        }
         
+        navigationController.navigationBar.tintColor = GeneralProperties.blueColor
     }
     
 }
