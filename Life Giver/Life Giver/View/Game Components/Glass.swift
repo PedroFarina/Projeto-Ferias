@@ -8,10 +8,17 @@
 
 import UIKit
 
+
+
 public class Glass : UIImageView, AffectedByDynamics{
+    public lazy var path: UIBezierPath = UIBezierPath(rect: self.frame)
     public var affectedByGravity: Bool = false
     public var stationary: Bool = true
-    public var categoryBitMask: UInt32 = 0x1 << 1
+    public var categoryBitMask: UInt32 = GeneralProperties.glassCategoryBitMask
     public var collisionBitGroup:UInt32 = 0x1
-    public var contactBitMask: UInt32 = 0x0
+    public var contactBitMask: UInt32 = GeneralProperties.dropletCategoryBitMask
+    
+    public var value:Int = 0
+    
+    public static let dimensions:CGSize = CGSize(width: 58, height: 58)
 }

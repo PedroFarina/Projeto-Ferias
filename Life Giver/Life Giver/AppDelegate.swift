@@ -12,7 +12,6 @@ import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var restrictRotation:UIInterfaceOrientationMask = .all
 
     var window: UIWindow?
 
@@ -25,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.applicationIconBadgeNumber = 0
         
         GeneralProperties.start()
+        GeneralProperties.enableColors()
         let defaults = UserDefaults.standard
         if defaults.integer(forKey: GeneralProperties.SFXKey) == 0{
             defaults.set(101, forKey: GeneralProperties.SFXKey)
@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask
     {
-        return self.restrictRotation
+        return .portrait
     }
 
     // MARK: - Core Data stack

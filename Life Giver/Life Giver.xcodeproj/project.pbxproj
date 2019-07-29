@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		024302FB22EBE6A4001384B7 /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024302FA22EBE6A4001384B7 /* Floor.swift */; };
 		0276DE1122DBD0BF00CEC4D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0276DE1022DBD0BF00CEC4D5 /* AppDelegate.swift */; };
 		0276DE1322DBD0BF00CEC4D5 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0276DE1222DBD0BF00CEC4D5 /* MainMenuViewController.swift */; };
 		0276DE1622DBD0BF00CEC4D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0276DE1422DBD0BF00CEC4D5 /* Main.storyboard */; };
@@ -45,10 +46,15 @@
 		02BE866522DD7CED009431BC /* Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE866422DD7CED009431BC /* Apple.swift */; };
 		02BE866722DD7D72009431BC /* Vase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE866622DD7D72009431BC /* Vase.swift */; };
 		02BE866922DD7D82009431BC /* Seed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE866822DD7D82009431BC /* Seed.swift */; };
+		02E5F1F922E6552D0071E000 /* LevelMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F1F822E6552D0071E000 /* LevelMaker.swift */; };
+		02E5F1FB22E7AE300071E000 /* LevelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F1FA22E7AE300071E000 /* LevelController.swift */; };
+		02E5F1FD22E7B0F80071E000 /* LevelSelectedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F1FC22E7B0F80071E000 /* LevelSelectedProtocol.swift */; };
+		02E5F1FF22E7B15E0071E000 /* LevelSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5F1FE22E7B15E0071E000 /* LevelSelectionController.swift */; };
 		02E6541322DF7AE100FFE2B5 /* SizeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E6541222DF7AE100FFE2B5 /* SizeAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		024302FA22EBE6A4001384B7 /* Floor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
 		0276DE0D22DBD0BF00CEC4D5 /* Life Giver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Life Giver.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0276DE1022DBD0BF00CEC4D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0276DE1222DBD0BF00CEC4D5 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +95,10 @@
 		02BE866422DD7CED009431BC /* Apple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple.swift; sourceTree = "<group>"; };
 		02BE866622DD7D72009431BC /* Vase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vase.swift; sourceTree = "<group>"; };
 		02BE866822DD7D82009431BC /* Seed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seed.swift; sourceTree = "<group>"; };
+		02E5F1F822E6552D0071E000 /* LevelMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelMaker.swift; sourceTree = "<group>"; };
+		02E5F1FA22E7AE300071E000 /* LevelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelController.swift; sourceTree = "<group>"; };
+		02E5F1FC22E7B0F80071E000 /* LevelSelectedProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectedProtocol.swift; sourceTree = "<group>"; };
+		02E5F1FE22E7B15E0071E000 /* LevelSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectionController.swift; sourceTree = "<group>"; };
 		02E6541222DF7AE100FFE2B5 /* SizeAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,8 +173,12 @@
 			isa = PBXGroup;
 			children = (
 				0276DE1222DBD0BF00CEC4D5 /* MainMenuViewController.swift */,
+				02E5F1FC22E7B0F80071E000 /* LevelSelectedProtocol.swift */,
+				02E5F1FE22E7B15E0071E000 /* LevelSelectionController.swift */,
 				02BE862422DC50B8009431BC /* LevelSelectionCollectionViewController.swift */,
 				0295EC9122DE4BF300FB041C /* ConfigurationTableViewController.swift */,
+				02E5F1F822E6552D0071E000 /* LevelMaker.swift */,
+				02E5F1FA22E7AE300071E000 /* LevelController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -236,6 +250,7 @@
 				02BE866422DD7CED009431BC /* Apple.swift */,
 				02BE866822DD7D82009431BC /* Seed.swift */,
 				02BE866622DD7D72009431BC /* Vase.swift */,
+				024302FA22EBE6A4001384B7 /* Floor.swift */,
 			);
 			path = "Game Components";
 			sourceTree = "<group>";
@@ -330,14 +345,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02E5F1FF22E7B15E0071E000 /* LevelSelectionController.swift in Sources */,
 				02BE862522DC50B8009431BC /* LevelSelectionCollectionViewController.swift in Sources */,
+				02E5F1F922E6552D0071E000 /* LevelMaker.swift in Sources */,
 				02BE861B22DC39ED009431BC /* ShapeView.swift in Sources */,
 				02BE864822DCF54B009431BC /* DynamicImageView.swift in Sources */,
 				02BE864622DCF54B009431BC /* DynamicShapeView.swift in Sources */,
 				0276DE1922DBD0BF00CEC4D5 /* Life_Giver.xcdatamodeld in Sources */,
 				02BE866922DD7D82009431BC /* Seed.swift in Sources */,
+				02E5F1FD22E7B0F80071E000 /* LevelSelectedProtocol.swift in Sources */,
 				0295EC9222DE4BF300FB041C /* ConfigurationTableViewController.swift in Sources */,
 				0276DE2A22DBD35C00CEC4D5 /* GeneralProperties.swift in Sources */,
+				024302FB22EBE6A4001384B7 /* Floor.swift in Sources */,
 				02BE863F22DCF517009431BC /* ContactDelegate.swift in Sources */,
 				02BE864022DCF517009431BC /* DynamicObjectFactory.swift in Sources */,
 				02BE866122DD7C05009431BC /* Glass.swift in Sources */,
@@ -345,6 +364,7 @@
 				0276DE1322DBD0BF00CEC4D5 /* MainMenuViewController.swift in Sources */,
 				02BE865F22DD7B0F009431BC /* Droplet.swift in Sources */,
 				02BE863E22DCF517009431BC /* DynamicAnimatorController.swift in Sources */,
+				02E5F1FB22E7AE300071E000 /* LevelController.swift in Sources */,
 				02BE864E22DD134C009431BC /* NotificationHandler.swift in Sources */,
 				02BE866522DD7CED009431BC /* Apple.swift in Sources */,
 				02BE862722DC5251009431BC /* ModelController.swift in Sources */,

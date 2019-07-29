@@ -45,7 +45,7 @@ public class GeneralProperties{
         didSet{
             defaults.set(DaltonismoValue, forKey: DaltonismoKey)
             if DaltonismoValue{
-                daltonismoSuSuffix = "Daltonismo"
+                daltonismoSuSuffix = " Daltonismo"
             }
             else{
                 daltonismoSuSuffix = ""
@@ -72,17 +72,17 @@ public class GeneralProperties{
             goldColor = #colorLiteral(red: 0.9176470588, green: 0.6862745098, blue: 0.1098039216, alpha: 1)
             playPath = "\(playPrefix)"
             cogPath = "\(cogPrefix)"
-            redApplePath = "\(applePrefix) \(redColorSuffix) \(daltonismoSuSuffix)"
-            greenApplePath = "\(applePrefix) \(greenColorSuffix) \(daltonismoSuSuffix)"
-            blueApplePath = "\(applePrefix) \(blueColorSuffix) \(daltonismoSuSuffix)"
+            redApplePath = "\(applePrefix) \(redColorSuffix)\(daltonismoSuSuffix)"
+            greenApplePath = "\(applePrefix) \(greenColorSuffix)\(daltonismoSuSuffix)"
+            blueApplePath = "\(applePrefix) \(blueColorSuffix)\(daltonismoSuSuffix)"
             vasePath = "\(vasePrefix) Normal"
-            redVasePath = "\(vasePrefix) \(redColorSuffix) \(daltonismoSuSuffix)"
-            greenVasePath = "\(vasePrefix) \(greenColorSuffix) \(daltonismoSuSuffix)"
-            blueVasePath = "\(vasePrefix) \(blueColorSuffix) \(daltonismoSuSuffix)"
+            redVasePath = "\(vasePrefix) \(redColorSuffix)\(daltonismoSuSuffix)"
+            greenVasePath = "\(vasePrefix) \(greenColorSuffix)\(daltonismoSuSuffix)"
+            blueVasePath = "\(vasePrefix) \(blueColorSuffix)\(daltonismoSuSuffix)"
             dropletPath = "\(dropletPrefix)"
-            redSeedPath = "\(seedPrefix) \(redColorSuffix) \(daltonismoSuSuffix)"
-            greenSeedPath = "\(seedPrefix) \(greenColorSuffix) \(daltonismoSuSuffix)"
-            blueSeedPath = "\(seedPrefix) \(blueColorSuffix) \(daltonismoSuSuffix)"
+            redSeedPath = "\(seedPrefix) \(redColorSuffix)\(daltonismoSuSuffix)"
+            greenSeedPath = "\(seedPrefix) \(greenColorSuffix)\(daltonismoSuSuffix)"
+            blueSeedPath = "\(seedPrefix) \(blueColorSuffix)\(daltonismoSuSuffix)"
             glassPath = "\(glassPrefix) Normal"
             glassBreakingPath = "\(glassPrefix) Quebrando"
             glassBrokenPath = "\(glassPrefix) Quebrado"
@@ -166,4 +166,14 @@ public class GeneralProperties{
         defaults.set(false, forKey: gameDone)
         hasColors = false
     }
+    
+    
+    //MARK: Physics
+    public static let dropletCategoryBitMask:UInt32 = 0x1
+    public static let glassCategoryBitMask:UInt32 = 0x1 << 1
+    public static let appleCategoryBitMask:UInt32 = 0x1 << 2
+    public static let seedCategoryBitMask:UInt32 = 0x1 << 3
+    public static let vaseCategoryBitMask:UInt32 = 0x1 << 4
+    public static let floorCategoryBitMask:UInt32 = 0x1 << 5
+    
 }

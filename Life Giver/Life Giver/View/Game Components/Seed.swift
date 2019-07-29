@@ -9,9 +9,12 @@
 import UIKit
 
 public class Seed : UIImageView, AffectedByDynamics{
+    public lazy var path: UIBezierPath = UIBezierPath(rect: self.frame)
     public var affectedByGravity: Bool = false
     public var stationary: Bool = false
-    public var categoryBitMask: UInt32 = 0x1 << 3
+    public var categoryBitMask: UInt32 = GeneralProperties.seedCategoryBitMask
     public var collisionBitGroup: UInt32 = 0x1
-    public var contactBitMask: UInt32 = 0x0
+    public var contactBitMask: UInt32 = GeneralProperties.vaseCategoryBitMask
+    
+    public static let dimensions:CGSize = CGSize(width: 34, height: 54)
 }

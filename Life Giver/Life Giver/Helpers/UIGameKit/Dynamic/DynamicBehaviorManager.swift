@@ -11,7 +11,7 @@ import UIKit
 public class DynamicBehaviorManager{
     private let animator:UIDynamicAnimator
     private let referenceBound:Bool
-    private let gravityBehavior:UIGravityBehavior
+    private var gravityBehavior:UIGravityBehavior
     private var collisionBehaviors:[UICollisionBehavior] = []
     public var collisionDelegate:UICollisionBehaviorDelegate?{
         didSet{
@@ -42,7 +42,7 @@ public class DynamicBehaviorManager{
         self.init(animator:animator, collisionDelegate:nil, translatesReferenceBoundsIntoBoundary:true)
     }
     
-    public func config(_ object:AffectedByDynamics) -> UIBezierPath?{
+    public func config(_ object:AffectedByDynamics){
         if object.affectedByGravity{
             self.gravityBehavior.addItem(object)
         }
@@ -62,23 +62,19 @@ public class DynamicBehaviorManager{
                         collisionBehaviors[i].addItem(object)
                     }
                     else{
-                        let path = UIBezierPath(rect: object.frame)
-                        collisionBehaviors[i].addBoundary(withIdentifier: path, for: path)
-                        return path
+                        collisionBehaviors[i].addBoundary(withIdentifier: object.path, for: object.path)
                     }
-                    
                 }
                 i+=1
             }
         }
-        return nil
     }
     
     public func remove(_ object:AffectedByDynamics){
-        remove(object, path: nil)
+        remove(object, path: object.path)
     }
     
-    public func remove(_ object:AffectedByDynamics, path:UIBezierPath?){
+    public func remove(_ object:AffectedByDynamics, path:UIBezierPath){
         if object.affectedByGravity{
             gravityBehavior.removeItem(object)
         }
@@ -91,17 +87,24 @@ public class DynamicBehaviorManager{
                     collisionBehaviors[i].removeItem(object)
                 }
                 else{
-                    guard let path = path else{
-                        return
+                    let boundaries:[UIBezierPath] = collisionBehaviors[i].boundaryIdentifiers as! [UIBezierPath]
+                    if boundaries.contains(path){
+                        collisionBehaviors[i].removeAllBoundaries()
+                        for b in boundaries{
+                            if b != path{
+                                collisionBehaviors[i].addBoundary(withIdentifier: b, for: b)
+                            }
+                        }
                     }
-                    collisionBehaviors[i].removeBoundary(withIdentifier: path)
                 }
-                
             }
             i+=1
         }
-        
         object.removeFromSuperview()
+    }
+    
+    deinit{
+        animator.removeAllBehaviors()
     }
     
     private func checkCount(count:Int){

@@ -14,4 +14,5 @@ public protocol AffectedByDynamics : UIView{
     var categoryBitMask:UInt32 { get }
     var collisionBitGroup:UInt32 { get }
     var contactBitMask:UInt32 { get }
+    var path:UIBezierPath { get }
 }

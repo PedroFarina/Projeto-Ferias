@@ -19,7 +19,7 @@ import UIKit
         radius = _radius
     }
     
-    public private(set) var path:UIBezierPath?
+    public private(set) var currentPath:UIBezierPath?
     
     private var _radius:CGFloat = 0
     @IBInspectable public var radius:CGFloat
@@ -32,7 +32,7 @@ import UIKit
             if _radius == 0{
                 backgroundColor = fillColor
                 self.layer.borderColor = borderColor.cgColor
-                path = nil
+                currentPath = nil
             }
             else{
                 backgroundColor = .clear
@@ -68,7 +68,7 @@ import UIKit
             let borderPath = UIBezierPath(arcCenter: center, radius: radius + borderWidth, startAngle: CGFloat.zero, endAngle: 2 * CGFloat.pi, clockwise: false)
             borderColor.setFill()
             borderPath.fill()
-            path = borderPath
+            currentPath = borderPath
             
             let fillPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: CGFloat.zero, endAngle: 2 * CGFloat.pi, clockwise: false)
             

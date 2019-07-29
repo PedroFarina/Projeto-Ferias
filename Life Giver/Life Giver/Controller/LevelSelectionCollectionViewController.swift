@@ -8,7 +8,8 @@
 
 import UIKit
 public class LevelSelectionCollectionViewController : UICollectionViewController{
-    var levels:[Level] = []
+    private var levels:[Level] = []
+    public var selectionDelegate:LevelSelectedDelegate?
     
     public override func viewDidLoad() {
         levels = ModelController.shared().getLevels()
@@ -47,5 +48,9 @@ public class LevelSelectionCollectionViewController : UICollectionViewController
             cell = lvCell
         }
         return cell
+    }
+    
+    public override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectionDelegate?.levelSelected(levels[indexPath.row].state)
     }
 }

@@ -51,6 +51,9 @@ public class ModelController{
         context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         do{
             _levels = try context.fetch(Level.fetchRequest())
+            _levels.sort(by: { (first, second) -> Bool in
+                return first.id < second.id
+                })
         }
         catch{
             fatalError("Não foi possível recuperar os dados.")
