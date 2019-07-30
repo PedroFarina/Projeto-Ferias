@@ -27,10 +27,6 @@ class MainMenuViewController : UIViewController {
             imgCogHeight.constant = SizeAdapter.getProportionalSize(imgCog, deviceSize: view.frame.size).height
             resized = true
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         guard let navigationController = navigationController else{
             return
         }

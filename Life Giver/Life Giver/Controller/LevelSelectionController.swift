@@ -9,19 +9,27 @@
 import UIKit
 
 public class LevelSelectionController : UIViewController, LevelSelectedDelegate{
-    private var levelState:String?
+    private var level:Level?
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        guard let navigationController = navigationController else{
+            return
+        }
+        
+        navigationController.navigationBar.tintColor = GeneralProperties.blueColor
+    }
     
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let collectionView = segue.destination as? LevelSelectionCollectionViewController{
             collectionView.selectionDelegate = self
         }
         else if let levelController = segue.destination as? LevelController{
-            levelController.Level = levelState
+            levelController.level = level
         }
     }
     
-    public func levelSelected(_ levelState: String?) {
-        self.levelState = levelState
+    public func levelSelected(_ level:Level) {
+        self.level = level
         performSegue(withIdentifier: "levelSelected", sender: self)
     }
 }

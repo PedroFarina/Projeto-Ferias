@@ -16,5 +16,7 @@ public class Seed : UIImageView, AffectedByDynamics{
     public var collisionBitGroup: UInt32 = 0x1
     public var contactBitMask: UInt32 = GeneralProperties.vaseCategoryBitMask
     
+    public var value:Int = 0
+    
     public static let dimensions:CGSize = CGSize(width: 34, height: 54)
 }

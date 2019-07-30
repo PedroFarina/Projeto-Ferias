@@ -119,11 +119,15 @@ public class GeneralProperties{
     private static let dropletPrefix = "Gota"
     private static let seedPrefix = "Semente"
     private static let glassPrefix = "Vidro"
+    private static let plantPrefix = "Planta"
     
     private static let grayStyleSuffix = "GS"
     private static let redColorSuffix = "Vermelha"
     private static let greenColorSuffix = "Verde"
     private static let blueColorSuffix = "Azul"
+    private static let pinkColorSuffix = "Rosa"
+    private static let yellowColorSuffix = "Amarela"
+    private static let lightBlueColorSuffix = "Azule"
     
     private static var daltonismoSuSuffix = ""
     
@@ -142,21 +146,80 @@ public class GeneralProperties{
     public private(set) static var redApplePath:String = ""
     public private(set) static var greenApplePath:String = ""
     public private(set) static var blueApplePath:String = ""
+    public static let redAppleValue:Int = 1
+    public static let greenAppleValue:Int = 2
+    public static let blueAppleValue:Int = 3
     //MARK : Vases
     public private(set) static var vasePath:String = ""
     public private(set) static var redVasePath:String = ""
     public private(set) static var greenVasePath:String = ""
     public private(set) static var blueVasePath:String = ""
+    public static let vaseValue:Int = 0
+    public static let redVaseValue:Int = 1
+    public static let greenVaseValue = 5
+    public static let blueVaseValue = 9
     //MARK : Droplet
     public private(set) static var dropletPath:String = ""
     //MARK : Seeds
     public private(set) static var redSeedPath:String = ""
     public private(set) static var greenSeedPath:String = ""
     public private(set) static var blueSeedPath:String = ""
+    public static func getSeedPathFor(value:Int) -> String{
+        switch value {
+        case redAppleValue:
+            return redSeedPath
+        case greenAppleValue:
+            return greenSeedPath
+        case blueAppleValue:
+            return blueSeedPath
+        default:
+            fatalError("Valor não previsto")
+        }
+    }
     //MARK : Glasses
     public private(set) static var glassPath:String = ""
     public private(set) static var glassBreakingPath:String = ""
     public private(set) static var glassBrokenPath:String = ""
+    //MARK : Plants
+    private static let totalPlantImages:Int = 4
+    public static func getPlantsPathesFor(value:Int) -> [String]{
+        /*
+        Apples
+        1 -> red
+        2 -> green
+        3 -> blue
+        Vases
+        0 -> no color(tutorial)
+        1 -> red
+        5 -> green
+        9 -> blue
+        */
+        var suffix:String? = hasColors ? nil : grayStyleSuffix
+        if suffix == nil{
+            switch value {
+            case redAppleValue + redVaseValue:
+                suffix = redColorSuffix
+            case greenAppleValue + greenVaseValue, 1:
+                suffix = greenColorSuffix
+            case blueAppleValue + blueVaseValue:
+                suffix = blueColorSuffix
+            case (greenAppleValue + redVaseValue), (redAppleValue + greenVaseValue):
+                suffix = yellowColorSuffix
+            case (blueAppleValue + redVaseValue), (redAppleValue + blueVaseValue):
+                suffix = pinkColorSuffix
+            case (blueAppleValue + greenVaseValue), (greenAppleValue + blueVaseValue):
+                suffix = lightBlueColorSuffix
+            default:
+                fatalError("Valor não previsto")
+            }
+        }
+        var paths:[String] = []
+        for i in 0..<totalPlantImages{
+            paths.append("\(plantPrefix) \(i) \(suffix!)\(daltonismoSuSuffix)")
+        }
+        
+        return paths
+    }
     
     public static func enableColors(){
         defaults.set(true, forKey: gameDone)

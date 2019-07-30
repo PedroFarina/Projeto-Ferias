@@ -20,4 +20,5 @@ public class Vase : UIImageView, AffectedByDynamics{
     public var wet:Bool = false
     
     public static let dimensions:CGSize = CGSize(width: 54, height: 59)
+    public static let withPlantDimension:CGSize = CGSize(width: 81, height: 154)
 }

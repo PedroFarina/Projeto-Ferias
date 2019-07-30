@@ -7,5 +7,5 @@
 //
 
 public protocol LevelSelectedDelegate{
-    func levelSelected(_ levelState:String?)
+    func levelSelected(_ level:Level)
 }

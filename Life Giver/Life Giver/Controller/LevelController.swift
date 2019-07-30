@@ -9,20 +9,21 @@
 import UIKit
 
 public class LevelController : UIViewController, ContactDelegate{
-    public var Level:String?
+    public var level:Level?
     private var animatorController:DynamicAnimatorController?
+    private var vases:[Vase] = []
     
     public override func viewWillAppear(_ animated: Bool) {
         animatorController = DynamicAnimatorController(view: self.view)
-        guard let Level = Level, let animatorController = animatorController else{
+        guard let level = level, let state = level.state, let animatorController = animatorController else{
             fatalError("Não foi possível fazer a transição de nível.")
         }
         animatorController.contactDelegate = self
-        animatorController.makeLevel(levelState: Level, controller: self, delegate: #selector(tapOccur(recognizer:)))
+        vases = animatorController.makeLevel(levelState: state, controller: self, delegate: #selector(tapOccur(recognizer:)))
     }
     
     @objc public func tapOccur(recognizer: UITapGestureRecognizer) {
-        guard let view = recognizer.view as? AffectedByDynamics else{
+        guard let view = recognizer.view as? AffectedByDynamics, let animatorController = animatorController else{
             fatalError("O objeto de toque não era do tipo correto.")
         }
         if let glass = view as? Glass{
@@ -34,16 +35,28 @@ public class LevelController : UIViewController, ContactDelegate{
                 glass.image = UIImage(named: GeneralProperties.glassBrokenPath)
             }
             else{
-                animatorController?.removeFromView(glass)
+                if let glass = glass as? GlassWithApple{
+                    if let ap = glass.getApple(){
+                        ap.center = glass.center
+                        ap.removeFromSuperview()
+                        ap.isUserInteractionEnabled = true
+                        animatorController.addSubview(ap)
+                    }
+                }
+                animatorController.removeFromView(glass)
             }
         }
         else if let apple = view as? Apple{
-            animatorController?.pushObject(object: apple, pushDirection: CGVector(dx: CGFloat.random(in: -3...3), dy: 3))
+            var rnd = 0
+            while rnd == 0{
+                rnd = Int.random(in: -3...3)
+            }
+            animatorController.pushObject(object: apple, pushDirection: CGVector(dx: rnd, dy: 3))
         }
     }
     
     public func contactOccur(contact: UIContact) {
-        guard let item1 = contact.item1 as? AffectedByDynamics, let item2 = contact.item2 as? AffectedByDynamics, let animatorController = animatorController else{
+        guard let item1 = contact.item1 as? AffectedByDynamics, let item2 = contact.item2 as? AffectedByDynamics, let _ = animatorController else{
             fatalError("Os itens de contato devem seguir o protocolo ou o animator é nil.")
         }
         
@@ -103,17 +116,9 @@ public class LevelController : UIViewController, ContactDelegate{
         guard let animatorController = animatorController else{
             fatalError("O animator controller é nil")
         }
-        var path:String
-        switch apple.value {
-        case 1:
-            path = GeneralProperties.redSeedPath
-        case 2:
-            path = GeneralProperties.blueSeedPath
-        default:
-            path = GeneralProperties.greenSeedPath
-        }
         
-        let s = Seed(image: UIImage(named: path))
+        let s = Seed(image: UIImage(named: GeneralProperties.getSeedPathFor(value: apple.value)))
+        s.value = apple.value
         //let size = SizeAdapter.getRatioSizeByMinor(Seed.dimensions, deviceSize: view.frame.size)
         //s.frame.size = CGSize(width: size.height, height: size.width)
         s.center = apple.center
@@ -128,14 +133,76 @@ public class LevelController : UIViewController, ContactDelegate{
         guard let animatorController = animatorController else{
             fatalError("O animator controller é nil")
         }
-        animatorController.removeFromView(seed)
+        if vase.wet && vase.tag == 0{
+            vase.frame.size = Vase.withPlantDimension
+            let diff = Vase.withPlantDimension - Vase.dimensions
+            vase.layer.position.x -= diff.width/2
+            vase.layer.position.y -= (diff.height + 12)
+            animatorController.removeFromView(seed)
+            var imgs:[UIImage] = []
+            for imgPath in GeneralProperties.getPlantsPathesFor(value: seed.value + vase.value){
+                if let img = UIImage(named: imgPath){
+                    imgs.append(img)
+                }
+            }
+            vase.animationImages = imgs
+            vase.animationDuration = 1.5
+            vase.startAnimating()
+            
+            _ = Timer.scheduledTimer(withTimeInterval: vase.animationDuration, repeats: false) { (timer) in
+                vase.stopAnimating()
+                vase.image = vase.animationImages?.last
+                vase.tag = seed.value + vase.value
+                self.checkEndGame()
+            }
+        }
+        else{
+            activeGesture?.isEnabled = false
+            activeGesture?.isEnabled = true
+        }
+    }
+    
+    func checkEndGame(){
+        guard let level = level else{
+            fatalError("O nível não existe mais.")
+        }
+        var finished:Bool = true
+        for v in vases{
+            finished &= v.tag > 0
+        }
+        if finished{
+            GeneralProperties.enableColors()
+            var completionLevel:Int = 0
+            for vase in vases{
+                let red:Bool = vase.tag == GeneralProperties.redAppleValue + GeneralProperties.redVaseValue
+                let green:Bool = vase.tag == GeneralProperties.greenAppleValue + GeneralProperties.greenVaseValue
+                let blue:Bool = vase.tag == GeneralProperties.blueAppleValue + GeneralProperties.blueVaseValue
+                
+                if red || green || blue{
+                    completionLevel++
+                }
+            }
+            if completionLevel == 0{
+                completionLevel++
+            }
+            
+            if completionLevel > level.completion{
+                let answer = ModelController.shared().modifyLevel(level: level, newCompletion: Int16(completionLevel))
+                if !answer.successful{
+                    fatalError(answer.description)
+                }
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     var initialCenter = CGPoint()
+    var activeGesture:UIPanGestureRecognizer?
     @objc func panPiece(_ gestureRecognizer : UIPanGestureRecognizer){
         guard let piece = gestureRecognizer.view as? AffectedByDynamics else {
             fatalError("O objeto arrastado não era do tipo correto.")
         }
+        activeGesture = gestureRecognizer
         // Get the changes in the X and Y directions relative to
         // the superview's coordinate space.
         let translation = gestureRecognizer.translation(in: piece.superview)
@@ -153,6 +220,7 @@ public class LevelController : UIViewController, ContactDelegate{
         else {
             // On cancellation, return the piece to its original location.
             piece.center = initialCenter
+            animatorController?.updateObject(object: piece)
         }
     }
     

@@ -22,21 +22,60 @@ public class ModelController{
     }
     
     //MARK : Modify
-    public func modifyLevel(level:Level, newState:String) -> ModelStatus{
-        level.state = newState
+    public func modifyLevel(level:Level, newCompletion:Int16) -> ModelStatus{
+        return modifyLevel(level: level, newCompletion: newCompletion, newState: level.state!)
+    }
+    public func modifyLevel(level:Level, newCompletion:Int16, newState:String) -> ModelStatus{
+        var hasModifications:Bool = false
+        if newCompletion != level.completion{
+            level.completion = newCompletion
+            hasModifications = true
+        }
+        if newState != level.state{
+            level.state = newState
+            hasModifications = true
+        }
+        
+        if hasModifications{
+            do{
+                try context.save()
+                return ModelStatus(successful: true)
+            }
+            catch{
+                return ModelStatus(successful: false, description: "Não foi possível editar o nível")
+            }
+        }
+        return ModelStatus(successful: true, description: "Não havia modificações")
+    }
+    
+    //MARK : Reset Level
+    public func resetLevelState(level:Level) -> ModelStatus{
+        let b = Bundle.main.localizedString(forKey: "Level \(level.id)", value: nil, table: "Levels")
+        level.state = b
         do{
             try context.save()
             return ModelStatus(successful: true)
         }
         catch{
-            return ModelStatus(successful: false, description: "Não foi possível editar o nível")
+            return ModelStatus(successful: false, description: "Não foi possível resetar o estado do nível.")
         }
     }
     
-    //MARK : Reset Level
+    public func resetLevelCompletion(level:Level) -> ModelStatus{
+        level.completion = 0
+        do{
+            try context.save()
+            return ModelStatus(successful: true)
+        }
+        catch{
+            return ModelStatus(successful: false, description: "Não foi possível resetar a compleção.")
+        }
+    }
+    
     public func resetLevel(level:Level) -> ModelStatus{
         let b = Bundle.main.localizedString(forKey: "Level \(level.id)", value: nil, table: "Levels")
         level.state = b
+        level.completion = 0
         do{
             try context.save()
             return ModelStatus(successful: true)

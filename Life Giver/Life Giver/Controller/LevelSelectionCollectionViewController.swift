@@ -15,6 +15,13 @@ public class LevelSelectionCollectionViewController : UICollectionViewController
         levels = ModelController.shared().getLevels()
     }
     
+    public override func viewWillAppear(_ animated: Bool) {
+        collectionView.reloadData()
+        for c in collectionView.visibleCells{
+            c.awakeFromNib()
+        }
+    }
+    
     public override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -51,6 +58,6 @@ public class LevelSelectionCollectionViewController : UICollectionViewController
     }
     
     public override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectionDelegate?.levelSelected(levels[indexPath.row].state)
+        selectionDelegate?.levelSelected(levels[indexPath.row])
     }
 }
