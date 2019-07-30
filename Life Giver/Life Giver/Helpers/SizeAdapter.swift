@@ -14,23 +14,23 @@ public class SizeAdapter{
     
     public static func getRatioSizeByHeight(_ size:CGSize, deviceSize:CGSize) -> CGSize{
         let newHeight:CGFloat = size.height * deviceSize.height / GeneralProperties.iPhoneXRSize.height
-        let ratio = (size.height / size.width)
+        let ratio = (size.width / size.height)
         
         let newWidth:CGFloat = newHeight * ratio
-        
+
         return CGSize(width: newWidth, height: newHeight)
     }
     
     public static func getRatioSizeByWidth(_ size:CGSize, deviceSize:CGSize) -> CGSize{
         let newWidth:CGFloat = size.width * deviceSize.width / GeneralProperties.iPhoneXRSize.width
-        let ratio = (size.width / size.height)
+        let ratio = (size.height / size.width)
         
         let newHeight:CGFloat = newWidth * ratio
-        
+
         return CGSize(width: newWidth, height: newHeight)
     }
     
-    public static func getRatioSizeByMinor(_ size:CGSize, deviceSize:CGSize) -> CGSize{
+    public static func getRatioSizeByBiggest(_ size:CGSize, deviceSize:CGSize) -> CGSize{
         if deviceSize.height < deviceSize.width{
             return getRatioSizeByHeight(size, deviceSize: deviceSize)
         }

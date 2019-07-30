@@ -9,11 +9,11 @@
 import UIKit
 
 public class Apple : UIImageView, AffectedByDynamics{
-    public lazy var path: UIBezierPath = UIBezierPath(arcCenter: self.center, radius: self.frame.height/2, startAngle: CGFloat.zero, endAngle: 2 * CGFloat.pi, clockwise: false)
+    public lazy var path: UIBezierPath = UIBezierPath(rect: self.frame)
     public var affectedByGravity: Bool = true
     public var stationary: Bool = false
     public var categoryBitMask: UInt32 = GeneralProperties.appleCategoryBitMask
-    public var collisionBitGroup: UInt32 = 0x1
+    public var collisionBitGroup: UInt32 = 0x1 << 1
     public var contactBitMask: UInt32 = GeneralProperties.dropletCategoryBitMask | GeneralProperties.floorCategoryBitMask
     
     public var value:Int = 0

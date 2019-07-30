@@ -13,6 +13,14 @@ public class NotificationHandler{
     private init(){
     }
     
+    public static var allowed:Bool = defaults.bool(forKey: "notificationPermission")
+    {
+        didSet{
+            defaults.set(allowed, forKey: "notificationPermission")
+            askPermission()
+        }
+    }
+    
     private static func askPermission(){
         let options: UNAuthorizationOptions = [.alert,.sound,.badge]
         
@@ -34,14 +42,14 @@ public class NotificationHandler{
     
     public static func handleNotification(response:UNNotificationResponse){
         var i = 0
-        var encontrado:Bool = false
+        var found:Bool = false
         for notification in notifications{
             if notification.identifier == response.notification.request.identifier{
                 if let actions = notification.actions{
                     for action in actions{
                         if action.0 == response.actionIdentifier{
                             action.1()
-                            encontrado =  true
+                            found =  true
                             break
                         }
                     }
@@ -50,7 +58,7 @@ public class NotificationHandler{
             i+=1
         }
         
-        if encontrado{
+        if found{
             notifications.remove(at: i)
             defaults.set(notifications, forKey: "Notifications")
         }
@@ -61,7 +69,7 @@ public class NotificationHandler{
     }
     
     public static func notify(title:String, body:String, time:Double, sound:Bool, badges:Bool, actions:[(title:String, action:() -> Void, appReOpens:Bool)]?){
-        if !defaults.bool(forKey: "notificationPermission"){
+        if !allowed{
             askPermission()
             return
         }

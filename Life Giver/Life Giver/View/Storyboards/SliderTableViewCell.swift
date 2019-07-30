@@ -15,6 +15,7 @@ public class SliderTableViewCell : UITableViewCell{
     
     public override func awakeFromNib() {
         slider.tintColor = GeneralProperties.blueColor
+        needsUpdateConstraints()
     }
     
     @IBAction func changeOccur(_ sender: UISlider) {

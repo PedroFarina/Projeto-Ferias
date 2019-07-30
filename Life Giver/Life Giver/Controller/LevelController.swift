@@ -28,7 +28,7 @@ public class LevelController : UIViewController, ContactDelegate{
             fatalError("O objeto de toque não era do tipo correto.")
         }
         if let glass = view as? Glass{
-            glass.value += 1
+            glass.value++
             if glass.value == 1{
                 glass.image = UIImage(named: GeneralProperties.glassBreakingPath)
             }
@@ -48,11 +48,12 @@ public class LevelController : UIViewController, ContactDelegate{
             }
         }
         else if let apple = view as? Apple{
-            var rnd = 0
+            let multiplier =  Int(apple.frame.size.width / Apple.dimensions.width)
+            var rnd:Int = 0
             while rnd == 0{
-                rnd = Int.random(in: -3...3)
+                rnd = Int.random(in: -1...1)
             }
-            animatorController.pushObject(object: apple, pushDirection: CGVector(dx: rnd, dy: 3))
+            animatorController.pushObject(object: apple, pushDirection: CGVector(dx: rnd * multiplier, dy: -multiplier))
         }
     }
     
@@ -99,8 +100,13 @@ public class LevelController : UIViewController, ContactDelegate{
         guard let animatorController = animatorController else{
             fatalError("O animator controller é nil")
         }
-        vase.wet = true
-        animatorController.removeFromView(droplet)
+        if !vase.wet{
+            vase.wet = true
+            animatorController.removeFromView(droplet)
+        }
+        else{
+            resetDroplet(droplet)
+        }
     }
     
     func resetDroplet(_ droplet:AffectedByDynamics){
@@ -120,8 +126,7 @@ public class LevelController : UIViewController, ContactDelegate{
         
         let s = Seed(image: UIImage(named: GeneralProperties.getSeedPathFor(value: apple.value)))
         s.value = apple.value
-        //let size = SizeAdapter.getRatioSizeByMinor(Seed.dimensions, deviceSize: view.frame.size)
-        //s.frame.size = CGSize(width: size.height, height: size.width)
+        s.frame.size = SizeAdapter.getRatioSizeByBiggest(Seed.dimensions, deviceSize: view.frame.size)
         s.center = apple.center
         animatorController.removeFromView(apple)
         animatorController.addSubview(s)
@@ -135,10 +140,11 @@ public class LevelController : UIViewController, ContactDelegate{
             fatalError("O animator controller é nil")
         }
         if vase.wet && vase.animationDuration == 0{
-            vase.frame.size = Vase.withPlantDimension
-            let diff = Vase.withPlantDimension - Vase.dimensions
+            let oldSize = vase.frame.size
+            vase.frame.size = SizeAdapter.getRatioSizeByBiggest(Vase.withPlantDimension, deviceSize: view.frame.size)
+            let diff = vase.frame.size - oldSize
             vase.layer.position.x -= diff.width/2
-            vase.layer.position.y -= (diff.height + 12)
+            vase.layer.position.y -= diff.height
             animatorController.removeFromView(seed)
             var imgs:[UIImage] = []
             for imgPath in GeneralProperties.getPlantsPathesFor(value: seed.value + vase.value){
@@ -172,7 +178,7 @@ public class LevelController : UIViewController, ContactDelegate{
             finished &= v.tag > 0
         }
         if finished{
-            var completionLevel:Int = 0
+            var completionLevel:Int = 1
             if vases.count == 1{
                 completionLevel = 3
             }
@@ -190,6 +196,9 @@ public class LevelController : UIViewController, ContactDelegate{
             if completionLevel == 0{
                 completionLevel++
             }
+            else if completionLevel == 4{
+                completionLevel--
+            }
             
             if completionLevel > level.completion{
                 let answer = ModelController.shared().modifyLevel(level: level, newCompletion: Int16(completionLevel))
@@ -198,8 +207,8 @@ public class LevelController : UIViewController, ContactDelegate{
                     fatalError(answer.description)
                 }
             }
-            if level.id == 4{
-                GeneralProperties.enableColors()
+            if level.id == GeneralProperties.colorLevelID{
+                GeneralProperties.unlockColors()
             }
             delegate?.levelFinished(level: level)
             self.dismiss(animated: true, completion: nil)

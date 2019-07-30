@@ -15,13 +15,19 @@ public class GlassWithApple : Glass{
         if let currentApple = self.apple{
             currentApple.removeFromSuperview()
         }
-        apple.frame.size = SizeAdapter.getRatioSizeByMinor(Apple.dimensions, deviceSize: deviceSize)
-        apple.center = self.center
+        apple.frame.size = SizeAdapter.getRatioSizeByBiggest(Apple.dimensions, deviceSize: deviceSize)
         self.addSubview(apple)
         self.apple = apple
     }
     
     public func getApple() -> Apple?{
         return apple
+    }
+    
+    public override func awakeFromNib() {
+        guard let apple = apple else{
+            return
+        }
+        apple.center = CGPoint(x: frame.width/2, y: frame.height/2)
     }
 }

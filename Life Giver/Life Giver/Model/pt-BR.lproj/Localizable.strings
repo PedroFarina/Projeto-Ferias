@@ -1,0 +1,11 @@
+/* 
+  Texts.strings
+  Life Giver
+
+  Created by Pedro Giuliano Farina on 30/07/19.
+  Copyright © 2019 Pedro Giuliano Farina. All rights reserved.
+*/
+
+"Footer" = "O modo daltônico só é acionado após o nível 5.";
+"SFX" = "Efeito";
+"BGM" = "Música";

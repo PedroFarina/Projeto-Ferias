@@ -12,4 +12,8 @@ extension CGSize{
     static func -(lsh:CGSize, rhs:CGSize) -> CGSize{
         return CGSize(width: lsh.width - rhs.width, height: lsh.height - rhs.height)
     }
+    
+    static func +(lsh:CGSize, rhs:CGSize) -> CGSize{
+        return CGSize(width: lsh.width + rhs.width, height: lsh.height + rhs.height)
+    }
 }

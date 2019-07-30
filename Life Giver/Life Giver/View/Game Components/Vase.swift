@@ -13,7 +13,7 @@ public class Vase : UIImageView, AffectedByDynamics{
     public var affectedByGravity: Bool = false
     public var stationary: Bool = true
     public var categoryBitMask: UInt32 = GeneralProperties.vaseCategoryBitMask
-    public var collisionBitGroup: UInt32 = 0x1
+    public var collisionBitGroup: UInt32 = 0x1 + 0x1 << 1
     public var contactBitMask: UInt32 = GeneralProperties.dropletCategoryBitMask | GeneralProperties.seedCategoryBitMask
     
     public var value:Int = 0

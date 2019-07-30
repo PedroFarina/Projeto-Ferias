@@ -90,11 +90,13 @@ public class DynamicBehaviorManager{
                     let boundaries:[UIBezierPath] = collisionBehaviors[i].boundaryIdentifiers as! [UIBezierPath]
                     if boundaries.contains(path){
                         collisionBehaviors[i].removeAllBoundaries()
+                        collisionBehaviors[i].translatesReferenceBoundsIntoBoundary = false
                         for b in boundaries{
                             if b != path{
                                 collisionBehaviors[i].addBoundary(withIdentifier: b, for: b)
                             }
                         }
+                        collisionBehaviors[i].translatesReferenceBoundsIntoBoundary = referenceBound
                     }
                 }
             }

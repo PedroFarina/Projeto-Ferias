@@ -1,0 +1,16 @@
+/* 
+  Texts.strings
+  Life Giver
+
+  Created by Pedro Giuliano Farina on 30/07/19.
+  Copyright © 2019 Pedro Giuliano Farina. All rights reserved.
+*/
+
+"Sons" = "Sounds";
+"Footer" = "Daltonism mode is unlocked after level 5.";
+"SFX" = "Effects";
+"BGM" = "Music";
+"Daltonismo" = "Daltonism";
+"Configurações" = "Configuration";
+"Curiosidades" = "Trivia Notifications";
+"Cores" = "Colors";

@@ -9,7 +9,7 @@
 import UIKit
 
 public class Droplet : UIImageView, AffectedByDynamics{
-    public lazy var path: UIBezierPath = UIBezierPath(arcCenter: self.center, radius: self.frame.height/2, startAngle: CGFloat.zero, endAngle: 2 * CGFloat.pi, clockwise: false)
+    public lazy var path: UIBezierPath = UIBezierPath(rect: self.frame)
     public var affectedByGravity: Bool = true
     public var stationary: Bool = false
     public var categoryBitMask: UInt32 = GeneralProperties.dropletCategoryBitMask

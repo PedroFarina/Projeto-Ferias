@@ -14,12 +14,20 @@ public class GeneralProperties{
     public static let iPhoneXRSize:CGSize = CGSize(width: 414, height: 896)
     
     private static let gameDone:String = "GameFinished"
+    private static let colorsEnabledKey:String = "ColorsEnabled"
+    public static let colorLevelID:Int16 = 4
     public static let SFXKey:String = "SFX"
     public static let BGMKey:String = "BGM"
     public static let DaltonismoKey:String = "Daltonismo"
     
     private static let defaults = UserDefaults.standard
-    private static var _hasColors:Bool = defaults.bool(forKey: gameDone)
+    
+    public static var colorsUnlocked:Bool{
+        get{
+            return defaults.bool(forKey: gameDone)
+        }
+    }
+    private static var _hasColors:Bool = defaults.bool(forKey: colorsEnabledKey)
     
     public private(set) static var hasColors:Bool{
         get{
@@ -221,12 +229,17 @@ public class GeneralProperties{
         return paths
     }
     
-    public static func enableColors(){
+    public static func unlockColors(){
         defaults.set(true, forKey: gameDone)
+        enableColors()
+    }
+    
+    public static func enableColors(){
+        defaults.set(true, forKey: colorsEnabledKey)
         hasColors = true
     }
     public static func disableColors(){
-        defaults.set(false, forKey: gameDone)
+        defaults.set(false, forKey: colorsEnabledKey)
         hasColors = false
     }
     

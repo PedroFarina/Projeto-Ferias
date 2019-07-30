@@ -130,7 +130,7 @@ extension DynamicAnimatorController{
                         obj.getApple()?.addGestureRecognizer(tapGesture)
                     }
                 }
-                obj.frame = CGRect(origin: p, size: SizeAdapter.getRatioSizeByMinor(size, deviceSize: view.frame.size))
+                obj.frame = CGRect(origin: p, size: SizeAdapter.getRatioSizeByBiggest(size, deviceSize: view.frame.size))
                 obj.center = p
                 addSubview(obj)
                 obj.awakeFromNib()

@@ -13,4 +13,8 @@ extension Int{
     static postfix func --(lNumber: inout Int){
         lNumber -= 1
     }
+    
+    static func *(lsh:Int, rhs:Double) -> Double{
+        return Double(lsh) * rhs
+    }
 }
