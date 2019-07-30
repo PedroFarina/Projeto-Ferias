@@ -30,8 +30,12 @@
  
  */
 
-"Level 0" = "eWeeWeW\ng\neeeebr\neeee11\n\n\n\n\n\n\neReeGeB";
+"Level 0" = "eeeW\n\n\n\ner\n\n\n\n\n\n\neeeV";
 
-"Level 1" = "WeeWeeW\n4eeeeer\n\n\n\nee3\n\n\n\n\nReeBeeG";
+"Level 1" = "eeeW\n\n\n\n\n\n\neee2\n\n\n\neeeV";
 
-//"Level 5" = "g1WWW\n11eee12\n\n\n\n\n\neee4\n\n\n\neeRGBee";
+"Level 2" = "eWeeWeW\ng\neeeebr\neeee11\n\n\n\n\n\n\neReeGeB";
+
+"Level 3" = "WeeWeeW\n4eeeeer\n\n\n\nee3\n\n\n\n\nReeBeeG";
+
+"Level 4" = "g1WWW\n11eee12\n\n\n\n\n\neee4\n\n\n\neeRGBee";

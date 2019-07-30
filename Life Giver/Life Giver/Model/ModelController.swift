@@ -12,7 +12,7 @@ import UIKit
 public class ModelController{
     //MARK : Properties
     private let context:NSManagedObjectContext
-    private var _levels:[Level]
+    private var _levels:[Level] = []
     
     //MARK : Level Accessors
     public func getLevels() -> [Level]{
@@ -39,6 +39,7 @@ public class ModelController{
         if hasModifications{
             do{
                 try context.save()
+                getdataLevels()
                 return ModelStatus(successful: true)
             }
             catch{
@@ -85,18 +86,23 @@ public class ModelController{
         }
     }
     
+    
     //MARK : Singleton properties
-    private init(){
-        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private func getdataLevels(){
         do{
             _levels = try context.fetch(Level.fetchRequest())
             _levels.sort(by: { (first, second) -> Bool in
                 return first.id < second.id
-                })
+            })
         }
         catch{
             fatalError("Não foi possível recuperar os dados.")
         }
+    }
+    
+    private init(){
+        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        getdataLevels()
         
         var level:String
         for i in _levels.count..<Int.max{

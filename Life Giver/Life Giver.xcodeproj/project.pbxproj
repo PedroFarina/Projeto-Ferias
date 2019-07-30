@@ -22,6 +22,7 @@
 		0295EC8E22DE45EC00FB041C /* SliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295EC8D22DE45EC00FB041C /* SliderTableViewCell.swift */; };
 		0295EC9022DE464400FB041C /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295EC8F22DE464400FB041C /* SwitchTableViewCell.swift */; };
 		0295EC9222DE4BF300FB041C /* ConfigurationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295EC9122DE4BF300FB041C /* ConfigurationTableViewController.swift */; };
+		02B7480722EFE89D00505069 /* LevelFinishedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B7480622EFE89D00505069 /* LevelFinishedProtocol.swift */; };
 		02BE861622DC3283009431BC /* NewYorkExtraLarge-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02BE861522DC3283009431BC /* NewYorkExtraLarge-Regular.otf */; };
 		02BE861822DC3899009431BC /* LevelSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02BE861722DC3899009431BC /* LevelSelection.storyboard */; };
 		02BE861B22DC39ED009431BC /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE861A22DC39EC009431BC /* ShapeView.swift */; };
@@ -75,6 +76,7 @@
 		0295EC8D22DE45EC00FB041C /* SliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTableViewCell.swift; sourceTree = "<group>"; };
 		0295EC8F22DE464400FB041C /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		0295EC9122DE4BF300FB041C /* ConfigurationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationTableViewController.swift; sourceTree = "<group>"; };
+		02B7480622EFE89D00505069 /* LevelFinishedProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelFinishedProtocol.swift; sourceTree = "<group>"; };
 		02BE861522DC3283009431BC /* NewYorkExtraLarge-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewYorkExtraLarge-Regular.otf"; sourceTree = "<group>"; };
 		02BE861722DC3899009431BC /* LevelSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LevelSelection.storyboard; sourceTree = "<group>"; };
 		02BE861A22DC39EC009431BC /* ShapeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			children = (
 				0276DE1222DBD0BF00CEC4D5 /* MainMenuViewController.swift */,
 				02E5F1FC22E7B0F80071E000 /* LevelSelectedProtocol.swift */,
+				02B7480622EFE89D00505069 /* LevelFinishedProtocol.swift */,
 				02E5F1FE22E7B15E0071E000 /* LevelSelectionController.swift */,
 				02BE862422DC50B8009431BC /* LevelSelectionCollectionViewController.swift */,
 				0295EC9122DE4BF300FB041C /* ConfigurationTableViewController.swift */,
@@ -367,6 +370,7 @@
 				02BE866922DD7D82009431BC /* Seed.swift in Sources */,
 				02E5F1FD22E7B0F80071E000 /* LevelSelectedProtocol.swift in Sources */,
 				0295EC9222DE4BF300FB041C /* ConfigurationTableViewController.swift in Sources */,
+				02B7480722EFE89D00505069 /* LevelFinishedProtocol.swift in Sources */,
 				0276DE2A22DBD35C00CEC4D5 /* GeneralProperties.swift in Sources */,
 				02001C1D22EFCBE200900667 /* IntOperators.swift in Sources */,
 				024302FB22EBE6A4001384B7 /* Floor.swift in Sources */,

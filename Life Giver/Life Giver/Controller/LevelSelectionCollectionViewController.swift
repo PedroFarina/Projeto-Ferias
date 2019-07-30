@@ -7,19 +7,40 @@
 //
 
 import UIKit
-public class LevelSelectionCollectionViewController : UICollectionViewController{
+public class LevelSelectionCollectionViewController : UICollectionViewController, LevelFinishedDelegate{
     private var levels:[Level] = []
     public var selectionDelegate:LevelSelectedDelegate?
     
     public override func viewDidLoad() {
-        levels = ModelController.shared().getLevels()
+        reloadData()
     }
     
-    public override func viewWillAppear(_ animated: Bool) {
-        collectionView.reloadData()
-        for c in collectionView.visibleCells{
-            c.awakeFromNib()
+    public func levelFinished(level:Level) {
+        if let cell = collectionView.cellForItem(at: IndexPath(row: Int(level.id), section: 0)) as? LevelSelectionCollectionViewCell{
+            cell.completionBadge.fillColor = getColorCellFor(completionValue: level.completion)
+            if level.id+1 != levels.count{
+                collectionView.cellForItem(at: IndexPath(row: Int(level.id + 1), section: 0))?.isHidden = false
+            }
         }
+        
+    }
+    
+    func getColorCellFor(completionValue:Int16) -> UIColor{
+        switch completionValue {
+        case 1:
+            return GeneralProperties.bronzeColor
+        case 2:
+            return GeneralProperties.silverColor
+        case 3:
+            return GeneralProperties.goldColor
+        default:
+            return .white
+        }
+    }
+    
+    public func reloadData(){
+        levels = ModelController.shared().getLevels()
+        collectionView.reloadData()
     }
     
     public override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -33,25 +54,16 @@ public class LevelSelectionCollectionViewController : UICollectionViewController
     public override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell:UICollectionViewCell = UICollectionViewCell()
         if let lvCell = collectionView.dequeueReusableCell(withReuseIdentifier: "levelCell", for: indexPath) as? LevelSelectionCollectionViewCell{
-            lvCell.lblLevel.text = "\(levels[indexPath.row].id + 1)"
+            let selectedLevel:Level = levels[indexPath.row]
+            
+            lvCell.lblLevel.text = "\(selectedLevel.id + 1)"
             lvCell.completionBadge.borderColor = GeneralProperties.lightblueColor
+            
             if indexPath.row != 0{
                 lvCell.isHidden = levels[indexPath.row - 1].completion == 0
             }
-            switch levels[indexPath.row].completion{
-            case 1:
-                lvCell.completionBadge.fillColor = GeneralProperties.bronzeColor
-                break
-            case 2:
-                lvCell.completionBadge.fillColor = GeneralProperties.silverColor
-                break
-            case 3:
-                lvCell.completionBadge.fillColor = GeneralProperties.goldColor
-                break
-            default:
-                lvCell.completionBadge.fillColor = .white
-                break
-            }
+            
+            lvCell.completionBadge.fillColor = getColorCellFor(completionValue: selectedLevel.completion)
             cell = lvCell
         }
         return cell

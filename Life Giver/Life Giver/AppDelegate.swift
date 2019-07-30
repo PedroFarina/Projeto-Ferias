@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.applicationIconBadgeNumber = 0
         
         GeneralProperties.start()
-        GeneralProperties.disableColors()
         let defaults = UserDefaults.standard
         if defaults.integer(forKey: GeneralProperties.SFXKey) == 0{
             defaults.set(101, forKey: GeneralProperties.SFXKey)

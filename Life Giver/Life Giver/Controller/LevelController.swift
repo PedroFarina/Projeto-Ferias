@@ -12,6 +12,7 @@ public class LevelController : UIViewController, ContactDelegate{
     public var level:Level?
     private var animatorController:DynamicAnimatorController?
     private var vases:[Vase] = []
+    public var delegate:LevelFinishedDelegate?
     
     public override func viewWillAppear(_ animated: Bool) {
         animatorController = DynamicAnimatorController(view: self.view)
@@ -133,7 +134,7 @@ public class LevelController : UIViewController, ContactDelegate{
         guard let animatorController = animatorController else{
             fatalError("O animator controller é nil")
         }
-        if vase.wet && vase.tag == 0{
+        if vase.wet && vase.animationDuration == 0{
             vase.frame.size = Vase.withPlantDimension
             let diff = Vase.withPlantDimension - Vase.dimensions
             vase.layer.position.x -= diff.width/2
@@ -171,15 +172,19 @@ public class LevelController : UIViewController, ContactDelegate{
             finished &= v.tag > 0
         }
         if finished{
-            GeneralProperties.enableColors()
             var completionLevel:Int = 0
-            for vase in vases{
-                let red:Bool = vase.tag == GeneralProperties.redAppleValue + GeneralProperties.redVaseValue
-                let green:Bool = vase.tag == GeneralProperties.greenAppleValue + GeneralProperties.greenVaseValue
-                let blue:Bool = vase.tag == GeneralProperties.blueAppleValue + GeneralProperties.blueVaseValue
-                
-                if red || green || blue{
-                    completionLevel++
+            if vases.count == 1{
+                completionLevel = 3
+            }
+            else{
+                for vase in vases{
+                    let red:Bool = vase.tag == GeneralProperties.redAppleValue + GeneralProperties.redVaseValue
+                    let green:Bool = vase.tag == GeneralProperties.greenAppleValue + GeneralProperties.greenVaseValue
+                    let blue:Bool = vase.tag == GeneralProperties.blueAppleValue + GeneralProperties.blueVaseValue
+                    
+                    if red || green || blue{
+                        completionLevel++
+                    }
                 }
             }
             if completionLevel == 0{
@@ -188,10 +193,15 @@ public class LevelController : UIViewController, ContactDelegate{
             
             if completionLevel > level.completion{
                 let answer = ModelController.shared().modifyLevel(level: level, newCompletion: Int16(completionLevel))
+                level.completion = Int16(completionLevel)
                 if !answer.successful{
                     fatalError(answer.description)
                 }
             }
+            if level.id == 4{
+                GeneralProperties.enableColors()
+            }
+            delegate?.levelFinished(level: level)
             self.dismiss(animated: true, completion: nil)
         }
     }
