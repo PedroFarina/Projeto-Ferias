@@ -16,8 +16,8 @@ public class NotificationHandler{
     public static var allowed:Bool = defaults.bool(forKey: "notificationPermission")
     {
         didSet{
-            defaults.set(allowed, forKey: "notificationPermission")
             askPermission()
+            defaults.set(allowed, forKey: "notificationPermission")
         }
     }
     
@@ -38,7 +38,12 @@ public class NotificationHandler{
     private static let defaults = UserDefaults.standard
     
     private static let notificationCenter:UNUserNotificationCenter = UNUserNotificationCenter.current()
-    private static var notifications:[MyNotification] = defaults.object(forKey: "Notifications") as? [MyNotification] ?? [MyNotification]()
+    private static var notifications:[MyNotification] = []
+    public static var notificationsOnHold:Int{
+        get{
+            return notifications.count
+        }
+    }
     
     public static func handleNotification(response:UNNotificationResponse){
         var i = 0
@@ -57,10 +62,9 @@ public class NotificationHandler{
             }
             i+=1
         }
-        
+        i-=1
         if found{
             notifications.remove(at: i)
-            defaults.set(notifications, forKey: "Notifications")
         }
     }
     
@@ -99,8 +103,7 @@ public class NotificationHandler{
                 content.body = NSString.localizedUserNotificationString(forKey: body, arguments: nil)
                 content.sound =  sound ? UNNotificationSound.default : nil
                 
-                let newBadgeNumber = NSNumber(value:UIApplication.shared.applicationIconBadgeNumber + (badges ? 1 : 0))
-                content.badge = newBadgeNumber
+                content.badge = badges ? 1 : 0 as NSNumber
                 
                 content.categoryIdentifier = userActions
                 
@@ -114,7 +117,6 @@ public class NotificationHandler{
                     }
                 })
                 notifications.append(MyNotification(identifier: identifier, actions: actions))
-                defaults.set(notifications, forKey: "Notifications")
             }
         }
     }

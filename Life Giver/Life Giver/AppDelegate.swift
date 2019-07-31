@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationCenter.delegate = self
         
         UIApplication.shared.applicationIconBadgeNumber = 0
+        NotificationSender.sendNotification()
         
         GeneralProperties.start()
         let defaults = UserDefaults.standard

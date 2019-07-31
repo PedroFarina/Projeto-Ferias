@@ -23,16 +23,16 @@ public class LevelSelectionCollectionViewController : UICollectionViewController
             if level.id+1 != levels.count{
                 collectionView.cellForItem(at: IndexPath(row: Int(level.id + 1), section: 0))?.isHidden = false
             }
-            var itemsAt:[IndexPath] = []
-            if level.id == GeneralProperties.colorLevelID{
-                for i in 0 ..< levels.count{
-                    itemsAt.append(IndexPath(item: i, section: 0))
-                }
-            }
-            else{
-                itemsAt.append(indexPath)
-            }
-            collectionView.reloadItems(at: itemsAt)
+//            var itemsAt:[IndexPath] = []
+//            if level.id == GeneralProperties.colorLevelID{
+//                for i in 0 ..< levels.count{
+//                    itemsAt.append(IndexPath(item: i, section: 0))
+//                }
+//            }
+//            else{
+//                itemsAt.append(indexPath)
+//            }
+            collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
             //viewDidLayoutSubviews()
             //collectionView.collectionViewLayout.invalidateLayout()
         }
@@ -74,7 +74,10 @@ public class LevelSelectionCollectionViewController : UICollectionViewController
             lvCell.completionBadge.borderColor = GeneralProperties.lightblueColor
             
             if indexPath.row != 0{
-                //lvCell.isHidden = levels[indexPath.row - 1].completion == 0
+                lvCell.isHidden = levels[indexPath.row - 1].completion == 0
+            }
+            else{
+                lvCell.isHidden = false
             }
             
             lvCell.completionBadge.fillColor = getColorCellFor(completionValue: selectedLevel.completion)

@@ -91,6 +91,7 @@ public class ConfigurationTableViewController : UITableViewController{
                     switchCell.onOffChanged = {
                         (uiSwitch) in
                         NotificationHandler.allowed = uiSwitch.isOn
+                        NotificationSender.sendNotification()
                     }
                     colorables.append(switchCell.onOff)
                     cell = switchCell

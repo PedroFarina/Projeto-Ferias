@@ -11,6 +11,12 @@
 "SFX" = "Effects";
 "BGM" = "Music";
 "Daltonismo" = "Daltonism";
-"Configurações" = "Configuration";
+"Configurações" = "Settings";
 "Curiosidades" = "Trivia Notifications";
 "Cores" = "Colors";
+"Notification Title" = "Did you know?";
+"Notification 1" = "This app was entirely made with colors that when converted to grayscale, become the same.";
+"Notification 2" = "The developer took most of his inspiration from the movie \"The Giver\".";
+"Notification 3" = "In daltonic mode the basic colors (RGB) have stripes in different directions.";
+"Notification 4" = "In daltonic mode, the combined colors (secondary) are represented by uniting various striped patterns to the basic colors (RGB).";
+"Notification 5" = "The developer is grateful for you download :)";

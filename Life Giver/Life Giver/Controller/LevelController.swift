@@ -53,7 +53,7 @@ public class LevelController : UIViewController, ContactDelegate{
             while rnd == 0{
                 rnd = Int.random(in: -1...1)
             }
-            animatorController.pushObject(object: apple, pushDirection: CGVector(dx: rnd * multiplier, dy: -multiplier))
+            animatorController.pushObject(object: apple, pushDirection: CGVector(dx: rnd * multiplier + 0.5, dy: -multiplier - 0.5))
         }
     }
     

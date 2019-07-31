@@ -17,4 +17,12 @@ extension Int{
     static func *(lsh:Int, rhs:Double) -> Double{
         return Double(lsh) * rhs
     }
+    
+    static func -(lsh:Int, rhs:Double) -> Double{
+        return Double(lsh) - rhs
+    }
+    
+    static func +(lsh:Int, rhs:Double) -> Double{
+        return Double(lsh) + rhs
+    }
 }
