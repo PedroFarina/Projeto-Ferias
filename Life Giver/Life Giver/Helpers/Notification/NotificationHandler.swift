@@ -32,6 +32,7 @@ public class NotificationHandler{
             else{
                 defaults.set(true, forKey: "notificationPermission")
             }
+            self.notifications = []
         }
     }
     
@@ -39,6 +40,7 @@ public class NotificationHandler{
     
     private static let notificationCenter:UNUserNotificationCenter = UNUserNotificationCenter.current()
     private static var notifications:[MyNotification] = []
+    private static var badgeCounter:Int = 0
     public static var notificationsOnHold:Int{
         get{
             return notifications.count
@@ -102,8 +104,8 @@ public class NotificationHandler{
                 content.title = NSString.localizedUserNotificationString(forKey: title, arguments: nil)
                 content.body = NSString.localizedUserNotificationString(forKey: body, arguments: nil)
                 content.sound =  sound ? UNNotificationSound.default : nil
-                
-                content.badge = badges ? 1 : 0 as NSNumber
+                badgeCounter += badges ? 1 : 0
+                content.badge = badgeCounter as NSNumber
                 
                 content.categoryIdentifier = userActions
                 

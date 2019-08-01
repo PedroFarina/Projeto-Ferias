@@ -12,12 +12,20 @@ public class NotificationSender{
     private init(){
     }
     
+    private static let defaults = UserDefaults.standard
+    public static var permitted:Bool = defaults.bool(forKey: "ntfPermitted"){
+        didSet{
+            defaults.set(permitted, forKey: "ntfPermitted")
+        }
+    }
+    
     public static func sendNotification(){
-        if NotificationHandler.allowed && NotificationHandler.notificationsOnHold == 0{
-            let title:String = Bundle.main.localizedString(forKey: "Notification Title", value: nil, table: nil)
-            let body:String = Bundle.main.localizedString(forKey: "Notification \(Int.random(in: 1...4))", value: nil, table: nil)
-            let more:String = Bundle.main.localizedString(forKey: "Quero saber mais!", value: nil, table: nil)
-            NotificationHandler.notify(title: title, body: body, time: Double.random(in: 300...500), sound: false, badges: true)
+        if permitted{
+            if NotificationHandler.allowed && NotificationHandler.notificationsOnHold == 0{
+                let title:String = Bundle.main.localizedString(forKey: "Notification Title", value: nil, table: nil)
+                let body:String = Bundle.main.localizedString(forKey: "Notification \(Int.random(in: 1...5))", value: nil, table: nil)
+                NotificationHandler.notify(title: title, body: body, time: Double.random(in: 120...300), sound: false, badges: false)
+            }
         }
     }
 }

@@ -242,11 +242,11 @@
 		02BE863722DCF4EE009431BC /* Dynamic */ = {
 			isa = PBXGroup;
 			children = (
+				02BE863822DCF517009431BC /* UIContact.swift */,
 				02BE863A22DCF517009431BC /* ContactDelegate.swift */,
 				02BE863922DCF517009431BC /* DynamicAnimatorController.swift */,
 				02BE863C22DCF517009431BC /* DynamicBehaviorManager.swift */,
 				02BE863B22DCF517009431BC /* DynamicObjectFactory.swift */,
-				02BE863822DCF517009431BC /* UIContact.swift */,
 			);
 			path = Dynamic;
 			sourceTree = "<group>";

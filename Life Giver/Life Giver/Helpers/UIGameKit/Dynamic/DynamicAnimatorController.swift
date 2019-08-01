@@ -89,9 +89,6 @@ public class DynamicAnimatorController : NSObject, UICollisionBehaviorDelegate{
         guard let it1 = item as? AffectedByDynamics, let it2 = item2 else{
             fatalError("The dynamics items were not according to the protocol. Please if in doubt use the DynamicObjectsFactory")
         }
-        if contactDelegate == nil{
-            print("OPORA")
-        }
         if (it1.categoryBitMask & it2.contactBitMask) > 0{
             contactDelegate?.contactOccur(contact: UIContact(behavior: behavior, item1: it1, item2: it2, at: p))
         }

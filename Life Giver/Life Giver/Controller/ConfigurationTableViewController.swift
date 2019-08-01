@@ -24,6 +24,10 @@ public class ConfigurationTableViewController : UITableViewController{
         navigationItem.title = Bundle.main.localizedString(forKey: "Configurações", value: nil, table: nil)
     }
     
+    public override func viewWillDisappear(_ animated: Bool) {
+        NotificationSender.sendNotification()
+    }
+    
     public func setColors(){
         for view in colorables{
             view.awakeFromNib()
@@ -90,7 +94,7 @@ public class ConfigurationTableViewController : UITableViewController{
                     switchCell.onOff.isOn = NotificationHandler.allowed
                     switchCell.onOffChanged = {
                         (uiSwitch) in
-                        NotificationHandler.allowed = uiSwitch.isOn
+                        NotificationSender.permitted = uiSwitch.isOn
                         NotificationSender.sendNotification()
                     }
                     colorables.append(switchCell.onOff)
