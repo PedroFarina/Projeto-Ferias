@@ -30,4 +30,14 @@ public class GlassWithApple : Glass{
         }
         apple.center = CGPoint(x: frame.width/2, y: frame.height/2)
     }
+    
+    public override var center: CGPoint{
+        get{
+            return super.center
+        }
+        set{
+            apple?.center = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
+            super.center = newValue
+        }
+    }
 }

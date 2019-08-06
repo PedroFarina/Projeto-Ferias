@@ -16,8 +16,6 @@ public class GeneralProperties{
     private static let gameDone:String = "GameFinished"
     private static let colorsEnabledKey:String = "ColorsEnabled"
     public static let colorLevelID:Int16 = 4
-    public static let SFXKey:String = "SFX"
-    public static let BGMKey:String = "BGM"
     public static let DaltonismoKey:String = "Daltonismo"
     
     private static let defaults = UserDefaults.standard
@@ -39,16 +37,6 @@ public class GeneralProperties{
         }
     }
     
-    public static var SFXValue:Int = defaults.integer(forKey: SFXKey){
-        didSet{
-            defaults.set(SFXValue, forKey: SFXKey)
-        }
-    }
-    public static var BGMValue:Int = defaults.integer(forKey: BGMKey){
-        didSet{
-            defaults.set(BGMValue, forKey: BGMKey)
-        }
-    }
     public static var DaltonismoValue:Bool = defaults.bool(forKey: DaltonismoKey){
         didSet{
             defaults.set(DaltonismoValue, forKey: DaltonismoKey)
@@ -237,12 +225,25 @@ public class GeneralProperties{
     public static func enableColors(){
         defaults.set(true, forKey: colorsEnabledKey)
         hasColors = true
+        changeIcon(to: "AlternateIcon")
     }
     public static func disableColors(){
         defaults.set(false, forKey: colorsEnabledKey)
         hasColors = false
+        changeIcon(to: nil)
     }
     
+    private static func changeIcon(to iconName: String?) {
+        guard UIApplication.shared.supportsAlternateIcons else {
+            return
+        }
+        
+        UIApplication.shared.setAlternateIconName(iconName, completionHandler: { (error) in
+            if let error = error {
+                print("App icon failed to change due to \(error.localizedDescription)")
+            }
+        })
+    }
     
     //MARK: Physics
     public static let dropletCategoryBitMask:UInt32 = 0x1

@@ -8,15 +8,31 @@
 
 import UIKit
 
-public class LevelSelectionCollectionViewCell : UICollectionViewCell{
+public class LevelSelectionTableViewCell : UITableViewCell{
     @IBOutlet var lblLevel: UILabel!
     @IBOutlet var completionBadge: ShapeView!
+    @IBOutlet var card: UIView!
+    public var completion:Int16 = 0
+    
+    func getColorCell() -> UIColor{
+        switch completion {
+        case 1:
+            return GeneralProperties.bronzeColor
+        case 2:
+            return GeneralProperties.silverColor
+        case 3, 4:
+            return GeneralProperties.goldColor
+        default:
+            return .white
+        }
+    }
     
     public override func awakeFromNib() {
-        layer.borderWidth = 1
-        layer.borderColor = GeneralProperties.lightblueColor.cgColor
-        layer.cornerRadius = 20
+        card.layer.borderWidth = 1
+        card.layer.borderColor = GeneralProperties.lightblueColor.cgColor
+        card.layer.cornerRadius = 20
         
         lblLevel.textColor = GeneralProperties.lightblueColor
+        completionBadge.fillColor = getColorCell()
     }
 }

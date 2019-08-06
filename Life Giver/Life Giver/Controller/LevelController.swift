@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 public class LevelController : UIViewController, ContactDelegate{
     public var level:Level?
@@ -23,6 +24,26 @@ public class LevelController : UIViewController, ContactDelegate{
         vases = animatorController.makeLevel(levelState: state, controller: self, delegate: #selector(tapOccur(recognizer:)))
     }
     
+    var running:Bool = false
+    func scaleUpAndDown(_ obj:UIView, duration:Double){
+        if vases.count == 1 && obj.tag < 3 && !running{
+            running = true
+            obj.tag++
+            let originalSize = obj.frame.size
+            let center = obj.center
+            UIView.animate(withDuration: duration/2, animations: {
+                obj.frame.size = obj.frame.size * 1.2
+                obj.center = center
+            }) { (success) in
+                UIView.animate(withDuration: duration/2, animations: {
+                    obj.frame.size = originalSize
+                    obj.center = center
+                    self.running = false
+                })
+            }
+        }
+    }
+    
     @objc public func tapOccur(recognizer: UITapGestureRecognizer) {
         guard let view = recognizer.view as? AffectedByDynamics, let animatorController = animatorController else{
             fatalError("O objeto de toque não era do tipo correto.")
@@ -31,11 +52,14 @@ public class LevelController : UIViewController, ContactDelegate{
             glass.value++
             if glass.value == 1{
                 glass.image = UIImage(named: GeneralProperties.glassBreakingPath)
+                SoundManager.playSFX(sound: .glassBreaking)
             }
             else if glass.value == 2{
                 glass.image = UIImage(named: GeneralProperties.glassBrokenPath)
+                SoundManager.playSFX(sound: .glassBreaking)
             }
             else{
+                SoundManager.playSFX(sound: .glassBroke)
                 if let glass = glass as? GlassWithApple{
                     if let ap = glass.getApple(){
                         ap.center = glass.center
@@ -48,12 +72,13 @@ public class LevelController : UIViewController, ContactDelegate{
             }
         }
         else if let apple = view as? Apple{
+            SoundManager.playSFX(sound: .appleJump)
             let multiplier =  Int(apple.frame.size.width / Apple.dimensions.width)
             var rnd:Int = 0
             while rnd == 0{
                 rnd = Int.random(in: -1...1)
             }
-            animatorController.pushObject(object: apple, pushDirection: CGVector(dx: rnd * multiplier + 0.5, dy: -multiplier - 0.5))
+            animatorController.pushObject(object: apple, pushDirection: CGVector(dx: max(Double(rnd * multiplier), rnd * 0.5), dy: min(Double(-multiplier), -0.5)))
         }
     }
     
@@ -68,6 +93,9 @@ public class LevelController : UIViewController, ContactDelegate{
             }
             else{
                 resetDroplet(item1)
+                if item2.categoryBitMask == GeneralProperties.glassCategoryBitMask{
+                    scaleUpAndDown(item2, duration: 0.6)
+                }
             }
             
         }
@@ -77,16 +105,27 @@ public class LevelController : UIViewController, ContactDelegate{
             }
             else{
                 resetDroplet(item2)
+                if item1.categoryBitMask == GeneralProperties.glassCategoryBitMask{
+                    scaleUpAndDown(item1, duration: 0.8)
+                }
             }
             
         }
-        else if item1.categoryBitMask == GeneralProperties.appleCategoryBitMask && item2.categoryBitMask == GeneralProperties.floorCategoryBitMask{
-            
-            turnToSeed(item1 as! Apple)
+        else if item1.categoryBitMask == GeneralProperties.appleCategoryBitMask{
+            if item2.categoryBitMask == GeneralProperties.floorCategoryBitMask{
+                turnToSeed(item1 as! Apple)
+            }
+            else{
+                scaleUpAndDown(item1, duration: 0.8)
+            }
         }
-        else if item2.categoryBitMask == GeneralProperties.appleCategoryBitMask && item1.categoryBitMask == GeneralProperties.floorCategoryBitMask{
-            
-            turnToSeed(item2 as! Apple)
+        else if item2.categoryBitMask == GeneralProperties.appleCategoryBitMask{
+            if item1.categoryBitMask == GeneralProperties.floorCategoryBitMask{
+                turnToSeed(item2 as! Apple)
+            }
+            else{
+                scaleUpAndDown(item2, duration: 0.8)
+            }
         }
         else if item1.categoryBitMask == GeneralProperties.seedCategoryBitMask && item2.categoryBitMask == GeneralProperties.vaseCategoryBitMask{
             createPlant(vase: item2 as! Vase, seed: item1 as! Seed)
@@ -103,6 +142,7 @@ public class LevelController : UIViewController, ContactDelegate{
         if !vase.wet{
             vase.wet = true
             animatorController.removeFromView(droplet)
+            SoundManager.playSFX(sound: .waterSuccess)
         }
         else{
             resetDroplet(droplet)
@@ -113,6 +153,7 @@ public class LevelController : UIViewController, ContactDelegate{
         guard let animatorController = animatorController else{
             fatalError("O animator controller é nil")
         }
+        SoundManager.playSFX(sound: .waterFail)
         let d = Droplet(image: UIImage(named: GeneralProperties.dropletPath))
         d.frame = animatorController.getInitialFrame(droplet)!
         animatorController.removeFromView(droplet)
@@ -123,13 +164,14 @@ public class LevelController : UIViewController, ContactDelegate{
         guard let animatorController = animatorController else{
             fatalError("O animator controller é nil")
         }
-        
+        SoundManager.playSFX(sound: .appleToSeed)
         let s = Seed(image: UIImage(named: GeneralProperties.getSeedPathFor(value: apple.value)))
         s.value = apple.value
         s.frame.size = SizeAdapter.getRatioSizeByBiggest(Seed.dimensions, deviceSize: view.frame.size)
         s.center = apple.center
         animatorController.removeFromView(apple)
         animatorController.addSubview(s)
+        scaleUpAndDown(s, duration: 1.2)
         let panRecognizer:UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panPiece(_:)))
         s.isUserInteractionEnabled = true
         s.addGestureRecognizer(panRecognizer)
@@ -210,6 +252,7 @@ public class LevelController : UIViewController, ContactDelegate{
             if level.id == GeneralProperties.colorLevelID{
                 GeneralProperties.unlockColors()
             }
+            SoundManager.playSFX(sound: .levelSuccess)
             delegate?.levelFinished(level: level)
             self.dismiss(animated: true, completion: nil)
         }

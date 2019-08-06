@@ -14,7 +14,7 @@ public class Apple : UIImageView, AffectedByDynamics{
     public var stationary: Bool = false
     public var categoryBitMask: UInt32 = GeneralProperties.appleCategoryBitMask
     public var collisionBitGroup: UInt32 = 0x1 << 1
-    public var contactBitMask: UInt32 = GeneralProperties.dropletCategoryBitMask | GeneralProperties.floorCategoryBitMask
+    public var contactBitMask: UInt32 = GeneralProperties.floorCategoryBitMask | GeneralProperties.vaseCategoryBitMask
     
     public var value:Int = 0
     

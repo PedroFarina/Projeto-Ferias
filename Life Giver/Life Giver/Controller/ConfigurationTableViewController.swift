@@ -54,7 +54,7 @@ public class ConfigurationTableViewController : UITableViewController{
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
-            return 2
+            return 1
         }
         else if GeneralProperties.colorsUnlocked{
             return 3
@@ -68,18 +68,10 @@ public class ConfigurationTableViewController : UITableViewController{
             if let soundCell = tableView.dequeueReusableCell(withIdentifier: "soundCell") as? SliderTableViewCell{
                 if indexPath.row == 0{
                     soundCell.lblTitle.text = Bundle.main.localizedString(forKey: "SFX", value: nil, table: nil)
-                    soundCell.slider.value = Float(GeneralProperties.SFXValue)
+                    soundCell.slider.value = Float(SoundManager.SFXValue)
                     soundCell.sliderChanged = {
                      (slider) in
-                        GeneralProperties.SFXValue = Int(slider.value)
-                    }
-                }
-                else{
-                    soundCell.lblTitle.text = Bundle.main.localizedString(forKey: "BGM", value: nil, table: nil)
-                    soundCell.slider.value = Float(GeneralProperties.BGMValue)
-                    soundCell.sliderChanged = {
-                        (slider) in
-                        GeneralProperties.BGMValue = Int(slider.value)
+                        SoundManager.SFXValue = Int(slider.value)
                     }
                 }
                 colorables.append(soundCell.slider)

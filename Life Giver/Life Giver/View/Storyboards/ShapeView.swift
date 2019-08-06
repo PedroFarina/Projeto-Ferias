@@ -43,21 +43,21 @@ import UIKit
     
     @IBInspectable public var borderWidth:CGFloat = 0{
         didSet{
-            needsUpdateConstraints()
+            setNeedsDisplay()
         }
     }
     
     @IBInspectable public var fillColor:UIColor = .red{
         didSet{
             radius = _radius
-            needsUpdateConstraints()
+            setNeedsDisplay()
         }
     }
     
     @IBInspectable public var borderColor:UIColor = .gray{
         didSet{
             radius = _radius
-            needsUpdateConstraints()
+            setNeedsDisplay()
         }
     }
     

@@ -20,7 +20,7 @@ public class LevelSelectionController : UIViewController, LevelSelectedDelegate{
     }
     
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let collectionView = segue.destination as? LevelSelectionCollectionViewController{
+        if let collectionView = segue.destination as? LevelSelectionTableViewController{
             collectionView.selectionDelegate = self
             levelFinishedDelegate = collectionView
         }

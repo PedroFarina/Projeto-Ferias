@@ -25,14 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationSender.sendNotification()
         
         GeneralProperties.start()
-        let defaults = UserDefaults.standard
-        if defaults.integer(forKey: GeneralProperties.SFXKey) == 0{
-            defaults.set(101, forKey: GeneralProperties.SFXKey)
-            GeneralProperties.SFXValue = 101
+        DispatchQueue.global(qos: .background).async {
+            SoundManager.initPlayers()
         }
-        if defaults.integer(forKey: GeneralProperties.BGMKey) == 0{
-            defaults.set(101, forKey: GeneralProperties.BGMKey)
-            GeneralProperties.BGMValue = 101
+        let defaults = UserDefaults.standard
+        if defaults.integer(forKey: SoundManager.SFXKey) == 0{
+            defaults.set(101, forKey: SoundManager.SFXKey)
+            SoundManager.SFXValue = 101
         }
         return true
     }
@@ -49,6 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -59,8 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         let defaults = UserDefaults.standard
-        defaults.set(GeneralProperties.SFXValue, forKey: GeneralProperties.SFXKey)
-        defaults.set(GeneralProperties.BGMValue, forKey: GeneralProperties.BGMKey)
+        defaults.set(SoundManager.SFXValue, forKey: SoundManager.SFXKey)
         defaults.set(GeneralProperties.DaltonismoValue, forKey: GeneralProperties.DaltonismoKey)
         self.saveContext()
     }

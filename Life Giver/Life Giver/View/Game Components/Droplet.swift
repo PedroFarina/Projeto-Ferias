@@ -14,7 +14,7 @@ public class Droplet : UIImageView, AffectedByDynamics{
     public var stationary: Bool = false
     public var categoryBitMask: UInt32 = GeneralProperties.dropletCategoryBitMask
     public var collisionBitGroup: UInt32 = 0x1
-    public var contactBitMask: UInt32 = GeneralProperties.glassCategoryBitMask | GeneralProperties.appleCategoryBitMask | GeneralProperties.vaseCategoryBitMask | GeneralProperties.floorCategoryBitMask
+    public var contactBitMask: UInt32 = GeneralProperties.glassCategoryBitMask | GeneralProperties.vaseCategoryBitMask | GeneralProperties.floorCategoryBitMask
     
     public static let dimensions:CGSize = CGSize(width: 14, height: 21)
 }

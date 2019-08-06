@@ -110,7 +110,7 @@ extension DynamicAnimatorController{
                 //object = Glass(image: UIImage(named: GeneralProperties.glassBreakingPath))
             //case "9":
                 //object = Glass(image: UIImage(named: GeneralProperties.glassBrokenPath))
-            case "\n":
+            case "\n", "n":
                 multiplier.y += 1
                 multiplier.x = 0
                 object = nil
