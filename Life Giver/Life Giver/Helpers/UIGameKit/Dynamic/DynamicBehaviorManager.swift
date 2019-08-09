@@ -102,7 +102,6 @@ public class DynamicBehaviorManager{
             }
             i+=1
         }
-        object.removeFromSuperview()
     }
     
     deinit{

@@ -17,25 +17,6 @@ public class LevelSelectionTableViewController : UITableViewController, LevelFin
     
     public func levelFinished(level:Level) {
         reloadData()
-        levels[Int(level.id)] = level
-        let indexPath:IndexPath = IndexPath(item: Int(level.id), section: 0)
-        if let cell = tableView.cellForRow(at: indexPath) as? LevelSelectionTableViewCell{
-            cell.completion = level.completion
-            if level.id+1 != levels.count{
-                tableView.cellForRow(at: IndexPath(row: Int(level.id + 1), section: 0))?.isHidden = false
-            }
-            var itemsAt:[IndexPath] = []
-            if level.id == GeneralProperties.colorLevelID{
-                if let ip = tableView.indexPathsForVisibleRows{
-                    itemsAt = ip
-                }
-            }
-            else{
-                itemsAt.append(indexPath)
-            }
-            tableView.reloadRows(at: itemsAt, with: .top)
-        }
-        
     }
     
     public func reloadData(){
@@ -48,7 +29,15 @@ public class LevelSelectionTableViewController : UITableViewController, LevelFin
     }
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return levels.count
+        var count = levels.filter({ (x) -> Bool in
+            return x.completion > 0
+        }).count
+        
+        if count != levels.count{
+            count += 1
+        }
+        
+        return count
     }
     
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {var cell:UITableViewCell = UITableViewCell()

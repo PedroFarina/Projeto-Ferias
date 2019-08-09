@@ -22,7 +22,6 @@
  
  1 -> glass obstacle
  5 -> breaking glass
- 9 -> broke glass
  
  + 1 -> red apple behind
  + 2 -> green apple behind
@@ -39,3 +38,13 @@
 "Level 3" = "WeeWeeW\n4eeeeer\n\n\n\nee3\n\n\n\n\nReeBeeG";
 
 "Level 4" = "eeWWW\n3eeee12\n\n\n\n\n\neee4\n\n\n\neeRGBee";
+
+"Level 5" = "eWeWeWe\n\n\n\n\n\n\n\n\n\n\ne4eRe2\neGe3eB";
+
+"Level 6" = "8eWWWe2\n\neee3\n\n\neeG\neeeR\neeeeB";
+
+"Level 7" = "eeeeeW\neeeW\neW\ne2\n\n\neGe4\neeeR\neee3\neeeeeB";
+
+"Level 8" = "eeW\neeeW\neeeeW\n\neeee3\ne2\neeeeee4\n\n\n\neeB\neeeG\neeeeR";
+
+"Level 9" = "WWWWWWW\n\n\n\n\n\n\n\n\n\nRGBRGBR\nrgbbrgr";

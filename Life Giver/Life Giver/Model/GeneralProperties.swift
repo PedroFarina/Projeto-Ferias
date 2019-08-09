@@ -125,7 +125,7 @@ public class GeneralProperties{
     private static let yellowColorSuffix = "Amarela"
     private static let lightBlueColorSuffix = "Azule"
     
-    private static var daltonismoSuSuffix = ""
+    private static var daltonismoSuSuffix = DaltonismoValue ? " Daltonismo" : ""
     
     //MARK : Colors
     public private(set) static var redColor:UIColor = UIColor()
@@ -209,6 +209,7 @@ public class GeneralProperties{
                 fatalError("Valor não previsto")
             }
         }
+        let daltonismoSuSuffix = hasColors ? self.daltonismoSuSuffix : ""
         var paths:[String] = []
         for i in 0..<totalPlantImages{
             paths.append("\(plantPrefix) \(i) \(suffix!)\(daltonismoSuSuffix)")

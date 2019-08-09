@@ -8,10 +8,11 @@
 
 "Footer" = "O modo daltônico só é acionado após o nível 5.";
 "SFX" = "Efeito";
-"BGM" = "Música";
 "Notification Title" = "Você sabia?";
 "Notification 1" = "Esse app foi feito inteiro com cores que ao convertidas ao tom de cinza, viram a mesma.";
 "Notification 2" = "O desenvolvedor se inspirou no filme \"Doador de Memórias\".";
 "Notification 3" = "No modo daltônico as cores-base (RGB) têm listras em sentidos diferentes.";
 "Notification 4" = "No modo daltônico, as cores combinadas (secundárias) são representadas pela união de listras em diferentes direções às cores-base (RGB).";
 "Notification 5" = "O desenvolvedor é muito grato pelo seu download :)";
+"Alert Title" = "Deseja acionar o modo daltônico?";
+"Alert Message" = "Detectamos que você usa um filtro de cores, depois você pode desabilitar essa opção nas configurações.";

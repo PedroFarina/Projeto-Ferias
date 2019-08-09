@@ -6,20 +6,20 @@
   Copyright © 2019 Pedro Giuliano Farina. All rights reserved.
 */
 
-"Sons" = "Sounds";
-"Footer" = "Colorblind mode is unlocked after level 5.";
-"SFX" = "Effects";
-"Daltonismo" = "Colorblind";
-"Configurações" = "Settings";
+"Sons" = "Tönen";
+"Footer" = "Der Farbenblindmodus ist nach Level 5 freigeschaltet.";
+"SFX" = "Lautstärke";
+"Daltonismo" = "Farbenblindigkeit";
+"Configurações" = "Einstellungen";
 "Curiosidades" = "Trivia Notifications";
-"Cores" = "Colors";
+"Cores" = "Farben";
 "Notification Title" = "Did you know?";
 "Notification 1" = "This app was entirely made with colors that when converted to grayscale, become the same.";
 "Notification 2" = "The developer took most of his inspiration from the movie \"The Giver\".";
 "Notification 3" = "In daltonic mode the basic colors (RGB) have stripes in different directions.";
 "Notification 4" = "In daltonic mode, the combined colors (secondary) are represented by uniting various striped patterns to the basic colors (RGB).";
 "Notification 5" = "The developer is grateful for you download :)";
-"Sim" = "Yes";
-"Não" = "No";
+"Sim" = "Ja";
+"Não" = "Nein";
 "Alert Title" = "Enable the colorblind mode?";
 "Alert Message" = "An iOS color filter was detected. You can change this option later in settings.";

@@ -32,8 +32,12 @@ public class DynamicAnimatorController : NSObject, UICollisionBehaviorDelegate{
     
     ///MARK : Configurating children to the view
     public func addSubview(_ view:AffectedByDynamics){
-        views.append((view, view.frame))
         animator.referenceView?.addSubview(view)
+        addBehaviors(to: view)
+    }
+    
+    public func addBehaviors(to view:AffectedByDynamics){
+        views.append((view, view.frame))
         behaviorManager.config(view)
     }
     
@@ -46,7 +50,7 @@ public class DynamicAnimatorController : NSObject, UICollisionBehaviorDelegate{
         return nil
     }
     
-    public func removeFromView(_ object:AffectedByDynamics){
+    public func removeBehaviors(of object:AffectedByDynamics){
         var i = 0
         var removed:Bool = false
         for obj in views{
@@ -60,6 +64,11 @@ public class DynamicAnimatorController : NSObject, UICollisionBehaviorDelegate{
             views.remove(at: i)
         }
         behaviorManager.remove(object)
+    }
+    
+    public func removeFromView(_ object:AffectedByDynamics){
+        removeBehaviors(of: object)
+        object.removeFromSuperview()
     }
     
     ///MARK : Collision Occur

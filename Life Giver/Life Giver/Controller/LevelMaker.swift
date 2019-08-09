@@ -106,8 +106,32 @@ extension DynamicAnimatorController{
                 let ap = Apple(image: UIImage(named: GeneralProperties.blueApplePath))
                 ap.value = GeneralProperties.blueAppleValue
                 (object as! GlassWithApple).setApple(ap, deviceSize: view.frame.size)
-            //case "5":
-                //object = Glass(image: UIImage(named: GeneralProperties.glassBreakingPath))
+            case "5":
+                object = Glass(image: UIImage(named: GeneralProperties.glassBreakingPath))
+                (object as! GlassWithApple).value += 1
+                size = Glass.dimensions
+            case "6":
+                object = GlassWithApple(image: UIImage(named: GeneralProperties.glassBreakingPath))
+                (object as! GlassWithApple).value += 1
+                size = Glass.dimensions
+                let ap = Apple(image: UIImage(named: GeneralProperties.redApplePath))
+                ap.value = GeneralProperties.redAppleValue
+                (object as! GlassWithApple).setApple(ap, deviceSize: view.frame.size)
+            case "7":
+                object = GlassWithApple(image: UIImage(named: GeneralProperties.glassBreakingPath))
+                (object as! GlassWithApple).value += 1
+                size = Glass.dimensions
+                let ap = Apple(image: UIImage(named: GeneralProperties.greenApplePath))
+                ap.value = GeneralProperties.greenAppleValue
+                (object as! GlassWithApple).setApple(ap, deviceSize: view.frame.size)
+            case "8":
+                object = GlassWithApple(image: UIImage(named: GeneralProperties.glassBreakingPath))
+                (object as! GlassWithApple).value += 1
+                size = Glass.dimensions
+                let ap = Apple(image: UIImage(named: GeneralProperties.blueApplePath))
+                ap.value = GeneralProperties.blueAppleValue
+                (object as! GlassWithApple).setApple(ap, deviceSize: view.frame.size)
+            //object = Glass(image: UIImage(named: GeneralProperties.glassBreakingPath))
             //case "9":
                 //object = Glass(image: UIImage(named: GeneralProperties.glassBrokenPath))
             case "\n", "n":

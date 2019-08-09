@@ -111,6 +111,7 @@
 		0228698322F4D57100B761AF /* AlternateIcon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AlternateIcon-76@2x.png"; sourceTree = "<group>"; };
 		0228698422F4D57100B761AF /* AlternateIcon-83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AlternateIcon-83.5@2x.png"; sourceTree = "<group>"; };
 		024302FA22EBE6A4001384B7 /* Floor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
+		027525D122FB473D0075192B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0276DE0D22DBD0BF00CEC4D5 /* Life Giver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Life Giver.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0276DE1022DBD0BF00CEC4D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0276DE1222DBD0BF00CEC4D5 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +162,8 @@
 		02BE866422DD7CED009431BC /* Apple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple.swift; sourceTree = "<group>"; };
 		02BE866622DD7D72009431BC /* Vase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vase.swift; sourceTree = "<group>"; };
 		02BE866822DD7D82009431BC /* Seed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seed.swift; sourceTree = "<group>"; };
+		02C0E14822FB471D00D6CFD0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		02C0E14922FB471D00D6CFD0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		02C7896322F2952200DFD0EC /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		02E5F1F822E6552D0071E000 /* LevelMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelMaker.swift; sourceTree = "<group>"; };
 		02E5F1FA22E7AE300071E000 /* LevelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelController.swift; sourceTree = "<group>"; };
@@ -430,6 +433,7 @@
 				en,
 				Base,
 				"pt-BR",
+				de,
 			);
 			mainGroup = 0276DE0422DBD0BF00CEC4D5;
 			productRefGroup = 0276DE0E22DBD0BF00CEC4D5 /* Products */;
@@ -544,6 +548,7 @@
 			children = (
 				0276DE1522DBD0BF00CEC4D5 /* Base */,
 				02B7481722F0F9A900505069 /* pt-BR */,
+				02C0E14822FB471D00D6CFD0 /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -553,6 +558,7 @@
 			children = (
 				0276DE1D22DBD0C000CEC4D5 /* Base */,
 				02B7481822F0F9A900505069 /* pt-BR */,
+				02C0E14922FB471D00D6CFD0 /* de */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -562,6 +568,7 @@
 			children = (
 				02B7480F22F0E89F00505069 /* en */,
 				02B7481922F0F9B200505069 /* pt-BR */,
+				027525D122FB473D0075192B /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

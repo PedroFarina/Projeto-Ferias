@@ -10,6 +10,10 @@ import UIKit
 import Foundation
 
 public class LevelController : UIViewController, ContactDelegate{
+    //fix while UIKit doesn't fix
+    public var droplets:[Droplet] = []
+    public var oldPositions:[CGPoint] = []
+    
     public var level:Level?
     private var animatorController:DynamicAnimatorController?
     private var vases:[Vase] = []
@@ -22,6 +26,9 @@ public class LevelController : UIViewController, ContactDelegate{
         }
         animatorController.contactDelegate = self
         vases = animatorController.makeLevel(levelState: state, controller: self, delegate: #selector(tapOccur(recognizer:)))
+        
+        //Fixes while UIKit doesn't fix
+        fixInit()
     }
     
     var running:Bool = false
@@ -32,7 +39,7 @@ public class LevelController : UIViewController, ContactDelegate{
             let originalSize = obj.frame.size
             let center = obj.center
             UIView.animate(withDuration: duration/2, animations: {
-                obj.frame.size = obj.frame.size * 1.2
+                obj.frame.size = obj.frame.size * 1.3
                 obj.center = center
             }) { (success) in
                 UIView.animate(withDuration: duration/2, animations: {
@@ -143,6 +150,9 @@ public class LevelController : UIViewController, ContactDelegate{
             vase.wet = true
             animatorController.removeFromView(droplet)
             SoundManager.playSFX(sound: .waterSuccess)
+            
+            //fix while UIKit doesn't fix
+           dropletFixRemove(droplet as! Droplet)
         }
         else{
             resetDroplet(droplet)
@@ -158,6 +168,10 @@ public class LevelController : UIViewController, ContactDelegate{
         d.frame = animatorController.getInitialFrame(droplet)!
         animatorController.removeFromView(droplet)
         animatorController.addSubview(d)
+        
+        //Fix while UIKit doens't fix
+        dropletFixRemove(droplet as! Droplet)
+        dropletFixAdd(d)
     }
     
     func turnToSeed(_ apple:Apple){
@@ -171,7 +185,7 @@ public class LevelController : UIViewController, ContactDelegate{
         s.center = apple.center
         animatorController.removeFromView(apple)
         animatorController.addSubview(s)
-        scaleUpAndDown(s, duration: 1.2)
+        scaleUpAndDown(s, duration: 1.5)
         let panRecognizer:UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panPiece(_:)))
         s.isUserInteractionEnabled = true
         s.addGestureRecognizer(panRecognizer)
@@ -197,7 +211,7 @@ public class LevelController : UIViewController, ContactDelegate{
             vase.animationImages = imgs
             vase.animationDuration = 1.5
             vase.startAnimating()
-            
+            animatorController.removeBehaviors(of: vase)
             _ = Timer.scheduledTimer(withTimeInterval: vase.animationDuration, repeats: false) { (timer) in
                 vase.stopAnimating()
                 vase.image = vase.animationImages?.last
@@ -238,8 +252,8 @@ public class LevelController : UIViewController, ContactDelegate{
             if completionLevel == 0{
                 completionLevel++
             }
-            else if completionLevel == 4{
-                completionLevel--
+            else if completionLevel >= 4{
+                completionLevel = 3
             }
             
             if completionLevel > level.completion{
@@ -250,12 +264,43 @@ public class LevelController : UIViewController, ContactDelegate{
                 }
             }
             if level.id == GeneralProperties.colorLevelID{
-                GeneralProperties.unlockColors()
+                if !GeneralProperties.colorsUnlocked{
+                    GeneralProperties.unlockColors()
+                }
+                checkColorBlind()
             }
-            SoundManager.playSFX(sound: .levelSuccess)
-            delegate?.levelFinished(level: level)
-            self.dismiss(animated: true, completion: nil)
+            else{
+                myDismiss()
+            }
         }
+    }
+    
+    func checkColorBlind(){
+        if (UIAccessibility.isGrayscaleEnabled || UIAccessibility.isInvertColorsEnabled || UIAccessibility.isDarkerSystemColorsEnabled) && !GeneralProperties.DaltonismoValue {
+            let alertTitle = Bundle.main.localizedString(forKey: "Alert Title", value: nil, table: nil)
+            let message = Bundle.main.localizedString(forKey: "Alert Message", value: nil, table: nil)
+            let yes = Bundle.main.localizedString(forKey: "Sim", value: nil, table: nil)
+            let no = Bundle.main.localizedString(forKey: "Não", value: nil, table: nil)
+            
+            let alert = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: yes, style: .default, handler: { (action) in
+                GeneralProperties.DaltonismoValue = true
+                self.myDismiss()
+            }))
+            alert.addAction(UIAlertAction(title: no, style: .cancel, handler: {(action) in
+                self.myDismiss()
+            }))
+            self.present(alert, animated: true)
+        }
+        else{
+            myDismiss()
+        }
+    }
+    
+    func myDismiss(){
+        SoundManager.playSFX(sound: .levelSuccess)
+        delegate?.levelFinished(level: level!)
+        self.dismiss(animated: true, completion: nil)
     }
     
     var initialCenter = CGPoint()
@@ -288,5 +333,48 @@ public class LevelController : UIViewController, ContactDelegate{
     
     deinit{
         animatorController = nil
+    }
+}
+
+//Bug fix while UIKit doesn't fix it
+extension LevelController{
+    public func fixInit(){
+        for view in view.subviews{
+            if let v = view as? Droplet{
+                droplets.append(v)
+                oldPositions.append(v.layer.position)
+            }
+        }
+        let _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (timer) in
+            var i:Int = 0
+            
+            for d in self.droplets{
+                if self.oldPositions[i] == d.layer.position{
+                    for v in self.vases{
+                        if !v.wet{
+                            d.center.y += Glass.dimensions.height
+                            self.animatorController?.updateObject(object: d)
+                            break
+                        }
+                    }
+                }
+                self.oldPositions[i] = d.layer.position
+                i += 1
+            }
+            })
+    }
+    
+    public func dropletFixRemove(_ droplet:Droplet){
+        for i in 0 ..< droplets.count{
+            if droplets[i] == droplet{
+                droplets.remove(at: i)
+                oldPositions[i] = CGPoint(x: -1, y: -1)
+                break
+            }
+        }
+    }
+    
+    public func dropletFixAdd(_ droplet:Droplet){
+        droplets.append(droplet)
     }
 }
