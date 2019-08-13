@@ -12,7 +12,7 @@ import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    let defaults = UserDefaults.standard
     var window: UIWindow?
 
 
@@ -24,16 +24,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.applicationIconBadgeNumber = 0
         NotificationSender.sendNotification()
         
+        #if DEBUG
+        for level in ModelController.shared().getLevels(){
+            _ = ModelController.shared().resetLevelState(level: level)
+        }
+        #else
+        checkUpdate()
+        #endif
+        
+        
         GeneralProperties.start()
         DispatchQueue.global(qos: .background).async {
             SoundManager.initPlayers()
         }
-        let defaults = UserDefaults.standard
         if defaults.integer(forKey: SoundManager.SFXKey) == 0{
             defaults.set(101, forKey: SoundManager.SFXKey)
             SoundManager.SFXValue = 101
         }
         return true
+    }
+    
+    func checkUpdate(){
+        guard let currentAppVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String else{
+            fatalError("Não foi possível pegar a versão.")
+        }
+        let previousVersion = defaults.string(forKey: "appVersion") ?? ""
+        if previousVersion == ""{
+            //Primeira instalação
+            defaults.set(currentAppVersion, forKey: "appVersion")
+            return
+        }
+        
+        if previousVersion != currentAppVersion{
+            for level in ModelController.shared().getLevels(){
+                _ = ModelController.shared().resetLevelState(level: level)
+            }
+            defaults.set(currentAppVersion, forKey: "appVersion")
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -58,7 +85,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        let defaults = UserDefaults.standard
         defaults.set(SoundManager.SFXValue, forKey: SoundManager.SFXKey)
         defaults.set(GeneralProperties.DaltonismoValue, forKey: GeneralProperties.DaltonismoKey)
         self.saveContext()

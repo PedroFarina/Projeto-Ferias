@@ -21,7 +21,7 @@ public class NotificationSender{
     
     public static func sendNotification(){
         if permitted{
-            if NotificationHandler.allowed && NotificationHandler.notificationsOnHold == 0{
+            if NotificationHandler.notificationsOnHold == 0{
                 let title:String = Bundle.main.localizedString(forKey: "Notification Title", value: nil, table: nil)
                 let body:String = Bundle.main.localizedString(forKey: "Notification \(Int.random(in: 1...5))", value: nil, table: nil)
                 NotificationHandler.notify(title: title, body: body, time: Double.random(in: 120...300), sound: false, badges: false)

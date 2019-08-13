@@ -37,6 +37,7 @@
 		0276DE1922DBD0BF00CEC4D5 /* Life_Giver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0276DE1722DBD0BF00CEC4D5 /* Life_Giver.xcdatamodeld */; };
 		0276DE1E22DBD0C000CEC4D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0276DE1C22DBD0C000CEC4D5 /* LaunchScreen.storyboard */; };
 		0276DE2A22DBD35C00CEC4D5 /* GeneralProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0276DE2922DBD35C00CEC4D5 /* GeneralProperties.swift */; };
+		028F57DA22FF4180004CAD05 /* Levels.strings in Resources */ = {isa = PBXBuildFile; fileRef = 028F57DC22FF4180004CAD05 /* Levels.strings */; };
 		0295EC8E22DE45EC00FB041C /* SliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295EC8D22DE45EC00FB041C /* SliderTableViewCell.swift */; };
 		0295EC9022DE464400FB041C /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295EC8F22DE464400FB041C /* SwitchTableViewCell.swift */; };
 		0295EC9222DE4BF300FB041C /* ConfigurationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295EC9122DE4BF300FB041C /* ConfigurationTableViewController.swift */; };
@@ -52,10 +53,9 @@
 		02BE861622DC3283009431BC /* NewYorkExtraLarge-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02BE861522DC3283009431BC /* NewYorkExtraLarge-Regular.otf */; };
 		02BE861822DC3899009431BC /* LevelSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02BE861722DC3899009431BC /* LevelSelection.storyboard */; };
 		02BE861B22DC39ED009431BC /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE861A22DC39EC009431BC /* ShapeView.swift */; };
-		02BE861F22DC3CFC009431BC /* LevelSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE861E22DC3CFC009431BC /* LevelSelectionCollectionViewCell.swift */; };
-		02BE862522DC50B8009431BC /* LevelSelectionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE862422DC50B8009431BC /* LevelSelectionCollectionViewController.swift */; };
+		02BE861F22DC3CFC009431BC /* LevelSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE861E22DC3CFC009431BC /* LevelSelectionTableViewCell.swift */; };
+		02BE862522DC50B8009431BC /* LevelSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE862422DC50B8009431BC /* LevelSelectionTableViewController.swift */; };
 		02BE862722DC5251009431BC /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE862622DC5251009431BC /* ModelController.swift */; };
-		02BE863122DCDA6A009431BC /* Levels.strings in Resources */ = {isa = PBXBuildFile; fileRef = 02BE863022DCDA6A009431BC /* Levels.strings */; };
 		02BE863422DCDFE9009431BC /* Level+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE863222DCDFE9009431BC /* Level+CoreDataClass.swift */; };
 		02BE863522DCDFE9009431BC /* Level+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE863322DCDFE9009431BC /* Level+CoreDataProperties.swift */; };
 		02BE863D22DCF517009431BC /* UIContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE863822DCF517009431BC /* UIContact.swift */; };
@@ -120,6 +120,9 @@
 		0276DE1D22DBD0C000CEC4D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0276DE1F22DBD0C000CEC4D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0276DE2922DBD35C00CEC4D5 /* GeneralProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralProperties.swift; sourceTree = "<group>"; };
+		028F57DB22FF4180004CAD05 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Levels.strings; sourceTree = "<group>"; };
+		028F57DD22FF4181004CAD05 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Levels.strings"; sourceTree = "<group>"; };
+		028F57DE22FF4185004CAD05 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Levels.strings; sourceTree = "<group>"; };
 		0295EC8D22DE45EC00FB041C /* SliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTableViewCell.swift; sourceTree = "<group>"; };
 		0295EC8F22DE464400FB041C /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		0295EC9122DE4BF300FB041C /* ConfigurationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationTableViewController.swift; sourceTree = "<group>"; };
@@ -138,10 +141,9 @@
 		02BE861522DC3283009431BC /* NewYorkExtraLarge-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewYorkExtraLarge-Regular.otf"; sourceTree = "<group>"; };
 		02BE861722DC3899009431BC /* LevelSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LevelSelection.storyboard; sourceTree = "<group>"; };
 		02BE861A22DC39EC009431BC /* ShapeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
-		02BE861E22DC3CFC009431BC /* LevelSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
-		02BE862422DC50B8009431BC /* LevelSelectionCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectionCollectionViewController.swift; sourceTree = "<group>"; };
+		02BE861E22DC3CFC009431BC /* LevelSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		02BE862422DC50B8009431BC /* LevelSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectionTableViewController.swift; sourceTree = "<group>"; };
 		02BE862622DC5251009431BC /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
-		02BE863022DCDA6A009431BC /* Levels.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Levels.strings; sourceTree = "<group>"; };
 		02BE863222DCDFE9009431BC /* Level+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Level+CoreDataClass.swift"; sourceTree = "<group>"; };
 		02BE863322DCDFE9009431BC /* Level+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Level+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		02BE863822DCF517009431BC /* UIContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIContact.swift; sourceTree = "<group>"; };
@@ -252,7 +254,7 @@
 				0276DE1722DBD0BF00CEC4D5 /* Life_Giver.xcdatamodeld */,
 				02BE863222DCDFE9009431BC /* Level+CoreDataClass.swift */,
 				02BE863322DCDFE9009431BC /* Level+CoreDataProperties.swift */,
-				02BE863022DCDA6A009431BC /* Levels.strings */,
+				028F57DC22FF4180004CAD05 /* Levels.strings */,
 				02B7481022F0E89F00505069 /* Localizable.strings */,
 			);
 			path = Model;
@@ -274,7 +276,7 @@
 				02E5F1FC22E7B0F80071E000 /* LevelSelectedProtocol.swift */,
 				02B7480622EFE89D00505069 /* LevelFinishedProtocol.swift */,
 				02E5F1FE22E7B15E0071E000 /* LevelSelectionController.swift */,
-				02BE862422DC50B8009431BC /* LevelSelectionCollectionViewController.swift */,
+				02BE862422DC50B8009431BC /* LevelSelectionTableViewController.swift */,
 				0295EC9122DE4BF300FB041C /* ConfigurationTableViewController.swift */,
 				02E5F1F822E6552D0071E000 /* LevelMaker.swift */,
 				02E5F1FA22E7AE300071E000 /* LevelController.swift */,
@@ -366,7 +368,7 @@
 				02BE861722DC3899009431BC /* LevelSelection.storyboard */,
 				02BE865622DD1FA7009431BC /* Level.storyboard */,
 				02BE861A22DC39EC009431BC /* ShapeView.swift */,
-				02BE861E22DC3CFC009431BC /* LevelSelectionCollectionViewCell.swift */,
+				02BE861E22DC3CFC009431BC /* LevelSelectionTableViewCell.swift */,
 				0295EC8D22DE45EC00FB041C /* SliderTableViewCell.swift */,
 				0295EC8F22DE464400FB041C /* SwitchTableViewCell.swift */,
 				02B7481A22F0FA3000505069 /* FooterView.swift */,
@@ -470,7 +472,7 @@
 				0228698822F4D57200B761AF /* AlternateIcon-Notification@3x.png in Resources */,
 				0228696A22F4A5C700B761AF /* glass shatter.wav in Resources */,
 				0228699122F4D57200B761AF /* AlternateIcon-Small-40@2x.png in Resources */,
-				02BE863122DCDA6A009431BC /* Levels.strings in Resources */,
+				028F57DA22FF4180004CAD05 /* Levels.strings in Resources */,
 				02EA766C22F2A521001A81ED /* Assets.xcassets in Resources */,
 				0228698522F4D57200B761AF /* AlternateIcon-Notification.png in Resources */,
 				02B0B63022F48E3B0083766E /* water drop.m4a in Resources */,
@@ -491,7 +493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02E5F1FF22E7B15E0071E000 /* LevelSelectionController.swift in Sources */,
-				02BE862522DC50B8009431BC /* LevelSelectionCollectionViewController.swift in Sources */,
+				02BE862522DC50B8009431BC /* LevelSelectionTableViewController.swift in Sources */,
 				02E5F1F922E6552D0071E000 /* LevelMaker.swift in Sources */,
 				02BE861B22DC39ED009431BC /* ShapeView.swift in Sources */,
 				02BE864822DCF54B009431BC /* DynamicImageView.swift in Sources */,
@@ -520,7 +522,7 @@
 				02001C1922EFBEA900900667 /* BoolOperators.swift in Sources */,
 				02BE866522DD7CED009431BC /* Apple.swift in Sources */,
 				02BE862722DC5251009431BC /* ModelController.swift in Sources */,
-				02BE861F22DC3CFC009431BC /* LevelSelectionCollectionViewCell.swift in Sources */,
+				02BE861F22DC3CFC009431BC /* LevelSelectionTableViewCell.swift in Sources */,
 				0295EC8E22DE45EC00FB041C /* SliderTableViewCell.swift in Sources */,
 				0295EC9022DE464400FB041C /* SwitchTableViewCell.swift in Sources */,
 				02BE863522DCDFE9009431BC /* Level+CoreDataProperties.swift in Sources */,
@@ -561,6 +563,16 @@
 				02C0E14922FB471D00D6CFD0 /* de */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		028F57DC22FF4180004CAD05 /* Levels.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				028F57DB22FF4180004CAD05 /* en */,
+				028F57DD22FF4181004CAD05 /* pt-BR */,
+				028F57DE22FF4185004CAD05 /* de */,
+			);
+			name = Levels.strings;
 			sourceTree = "<group>";
 		};
 		02B7481022F0E89F00505069 /* Localizable.strings */ = {

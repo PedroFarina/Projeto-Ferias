@@ -234,7 +234,7 @@ public class LevelController : UIViewController, ContactDelegate{
             finished &= v.tag > 0
         }
         if finished{
-            var completionLevel:Int = 1
+            var completionLevel:Int = 0
             if vases.count == 1{
                 completionLevel = 3
             }
@@ -249,7 +249,7 @@ public class LevelController : UIViewController, ContactDelegate{
                     }
                 }
             }
-            if completionLevel == 0{
+            if completionLevel == 0 || completionLevel == 1{
                 completionLevel++
             }
             else if completionLevel >= 4{
@@ -306,8 +306,8 @@ public class LevelController : UIViewController, ContactDelegate{
     var initialCenter = CGPoint()
     var activeGesture:UIPanGestureRecognizer?
     @objc func panPiece(_ gestureRecognizer : UIPanGestureRecognizer){
-        guard let piece = gestureRecognizer.view as? AffectedByDynamics else {
-            fatalError("O objeto arrastado não era do tipo correto.")
+        guard let piece = gestureRecognizer.view as? AffectedByDynamics, let animatorController = animatorController else {
+            fatalError("O objeto arrastado não era do tipo correto ou o animador era nulo.")
         }
         activeGesture = gestureRecognizer
         // Get the changes in the X and Y directions relative to
@@ -316,18 +316,22 @@ public class LevelController : UIViewController, ContactDelegate{
         if gestureRecognizer.state == .began {
             // Save the view's original position.
             self.initialCenter = piece.center
+            animatorController.removeBehaviors(of: piece)
         }
         // Update the position for the .began, .changed, and .ended states
         if gestureRecognizer.state != .cancelled {
             // Add the X and Y translation to the view's original position.
             let newCenter = CGPoint(x: initialCenter.x + translation.x, y: initialCenter.y + translation.y)
             piece.center = newCenter
-            animatorController?.updateObject(object: piece)
+            if gestureRecognizer.state == .ended{
+                animatorController.addBehaviors(to: piece)
+                animatorController.updateObject(object: piece)
+            }
         }
         else {
             // On cancellation, return the piece to its original location.
             piece.center = initialCenter
-            animatorController?.updateObject(object: piece)
+            animatorController.updateObject(object: piece)
         }
     }
     

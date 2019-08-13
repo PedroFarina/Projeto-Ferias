@@ -36,8 +36,11 @@ public class LevelSelectionTableViewController : UITableViewController, LevelFin
         if count != levels.count{
             count += 1
         }
-        
+        #if DEBUG
+        return levels.count
+        #else
         return count
+        #endif
     }
     
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {var cell:UITableViewCell = UITableViewCell()
@@ -48,12 +51,6 @@ public class LevelSelectionTableViewController : UITableViewController, LevelFin
             lvCell.completionBadge.borderColor = GeneralProperties.lightblueColor
             lvCell.completion = selectedLevel.completion
             lvCell.awakeFromNib()
-            if indexPath.row != 0{
-                lvCell.isHidden = levels[indexPath.row - 1].completion == 0
-            }
-            else{
-                lvCell.isHidden = false
-            }
             cell = lvCell
         }
         return cell

@@ -24,10 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zw4-3L-ah9">
-                                <rect key="frame" x="132" y="10" width="150" height="886"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="zzT-oM-od6"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="10" width="414" height="886"/>
                                 <connections>
                                     <segue destination="oNq-oh-Bsm" kind="embed" id="mQM-f9-u5t"/>
                                 </connections>
@@ -38,6 +35,7 @@
                             <constraint firstItem="Zw4-3L-ah9" firstAttribute="centerY" secondItem="y2H-qh-Akx" secondAttribute="centerY" id="0Ro-3o-uun"/>
                             <constraint firstItem="Zw4-3L-ah9" firstAttribute="centerX" secondItem="y2H-qh-Akx" secondAttribute="centerX" id="Lqw-gS-bfN"/>
                             <constraint firstAttribute="bottom" secondItem="Zw4-3L-ah9" secondAttribute="bottom" id="TlM-4V-E24"/>
+                            <constraint firstItem="Zw4-3L-ah9" firstAttribute="width" secondItem="y2H-qh-Akx" secondAttribute="width" id="egf-0i-Ca2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y2H-qh-Akx"/>
                     </view>
@@ -63,19 +61,19 @@
             <objects>
                 <tableViewController id="oNq-oh-Bsm" customClass="LevelSelectionTableViewController" customModule="Life_Giver" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qdf-Dv-6BM">
-                        <rect key="frame" x="0.0" y="0.0" width="150" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="levelCell" rowHeight="158" id="Hzp-Rz-ayw" customClass="LevelSelectionTableViewCell" customModule="Life_Giver" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="150" height="158"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="levelCell" rowHeight="158" id="Hzp-Rz-ayw" customClass="LevelSelectionTableViewCell" customModule="Life_Giver" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="158"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hzp-Rz-ayw" id="pek-c1-tV8">
-                                    <rect key="frame" x="0.0" y="0.0" width="150" height="158"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="158"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uSL-im-dJ6">
-                                            <rect key="frame" x="2" y="2" width="146" height="146"/>
+                                            <rect key="frame" x="134" y="2" width="146" height="146"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yp-CS-LSs">
                                                     <rect key="frame" x="58" y="11.5" width="30" height="95.5"/>

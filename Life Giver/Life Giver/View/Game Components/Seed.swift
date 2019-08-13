@@ -10,7 +10,7 @@ import UIKit
 
 public class Seed : UIImageView, AffectedByDynamics{
     public lazy var path: UIBezierPath = UIBezierPath(rect: self.frame)
-    public var affectedByGravity: Bool = false
+    public var affectedByGravity: Bool = true
     public var stationary: Bool = false
     public var categoryBitMask: UInt32 = GeneralProperties.seedCategoryBitMask
     public var collisionBitGroup: UInt32 = 0x1

@@ -83,7 +83,7 @@ public class ConfigurationTableViewController : UITableViewController{
             case 0:
                 if let switchCell = tableView.dequeueReusableCell(withIdentifier: "switchCell") as? SwitchTableViewCell{
                     switchCell.lblTitle.text = Bundle.main.localizedString(forKey: "Curiosidades", value: nil, table: nil)
-                    switchCell.onOff.isOn = NotificationHandler.allowed
+                    switchCell.onOff.isOn = NotificationSender.permitted
                     switchCell.onOffChanged = {
                         (uiSwitch) in
                         NotificationSender.permitted = uiSwitch.isOn

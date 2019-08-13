@@ -135,4 +135,9 @@ public class DynamicAnimatorController : NSObject, UICollisionBehaviorDelegate{
     public func updateObject(object:AffectedByDynamics){
         animator.updateItem(usingCurrentState: object)
     }
+    
+    public func updateBehavior(object:AffectedByDynamics){
+        removeBehaviors(of: object)
+        addBehaviors(to: object)
+    }
 }

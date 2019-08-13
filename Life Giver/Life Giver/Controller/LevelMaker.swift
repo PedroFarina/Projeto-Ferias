@@ -108,7 +108,7 @@ extension DynamicAnimatorController{
                 (object as! GlassWithApple).setApple(ap, deviceSize: view.frame.size)
             case "5":
                 object = Glass(image: UIImage(named: GeneralProperties.glassBreakingPath))
-                (object as! GlassWithApple).value += 1
+                (object as! Glass).value += 1
                 size = Glass.dimensions
             case "6":
                 object = GlassWithApple(image: UIImage(named: GeneralProperties.glassBreakingPath))

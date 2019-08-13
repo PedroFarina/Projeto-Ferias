@@ -1,0 +1,78 @@
+/*
+ Levels.strings
+ Life Giver
+ 
+ Created by Pedro Giuliano Farina on 15/07/19.
+ Copyright © 2019 Pedro Giuliano Farina. All rights reserved.
+ */
+
+/*
+ 
+ 7x15
+ b -> blue apple
+ B -> blue vase
+ e -> empty
+ g -> green apple
+ G -> green vase
+ r -> red apple
+ R -> red vase
+ W -> water
+ V -> normal vase
+ 
+ 
+ 1 -> glass obstacle
+ 5 -> breaking glass
+ 
+ + 1 -> red apple behind
+ + 2 -> green apple behind
+ + 3 -> blue apple behind
+ 
+ */
+
+"Level 0" = "eeeW\n\n\n\ner\n\n\n\n\n\n\neeeV";
+
+"Level 1" = "eeeW\n\n\n\n\n\n\neee2\n\n\n\neeeV";
+
+"Level 2" = "eWeeWeW\ng\n\neeee42\n\n\n\n\n\n\neReeGeB";
+
+"Level 3" = "WeeWeeW\n4eeeeer\n\n\n\nee3\n\n\n\n\nReeBeeG";
+
+"Level 4" = "eeWWW\n3eeee12\n\n\n\n\n\neee4\n\n\n\neeRGBee";
+
+"Level 5" = "eWeWeWe\n\n\n\n\n\n\n\n\n\n\ne4eRe2\neGe3eB";
+
+"Level 6" = "8eWWWe2\n\neee3\n\n\neeG\neeeR\neeeeB";
+
+"Level 7" = "eeeW\neeeW\neeeW\n\n\n\n\nee234\n\neeeR\n\neeeG\n\neeeB";
+
+"Level 8" = "eWeWeWe\n\neeeeeer\ne5\neee4\n\n\n\n\n\neg\neBeReG";
+
+"Level 9" = "WWWWWWW\n\n\n\n\n\n\n\n\n\nRGBRGBR\nrgbbrgr";
+
+"Level 10" = "eWeeeWW\n\neeeeee1\ne3\neee4\n\n\n\n\n\n\neRereBG";
+
+"Level 11" = "eeWeWeW\n\n\neeeee2\ne1e1\ne1e1e1\ne141e1\ne1e1e1\ne1e1e3\n\n\neeReBeG";
+
+"Level 12" = "WeeWW\n\n\n3\neee45\n\n\n\n\n\n\neeer\nReeBG";
+
+"Level 13" = "WeeWeeW\n\n\n\n\neee5\n\n3eeeee2\n\nReeeeeG\n\neee4\neeeB";
+
+"Level 14" = "eeWWW\n\n\n\n\neee5\nee131\ne14121\n\n\neeeB\n\neeReG";
+
+"Level 15" = "eWWWWW\n\n\n\n\ne2eee2\n\nee3\nee33\n\n\neReeeR\neeGRG";
+
+"Level 16" = "eWWWWee\n\n\n\n\n\ne1221\nee11\ne4114\n\n\neeBB\neReeR";
+
+"Level 17" = "WeeWeeW\n\neeeee3\n\neee2\neb\n\n\n\n\n\n\nReeGeeB";
+
+"Level 18" = "WeWeeeW\n\n\n\neeb\neeeee23\n\n\n\n\n\nReBeeeG";
+
+"Level 19" = "eWWWWW\n\n\ne4eee3\nee4e3\neee2\n\n\n\n\neeeR\neeBeG\neBeeeG";
+
+"Level 20" = "eeWeW\n\neeWeW\n\n\n\n\n\n\n\neeB2B\nee6e6\neeB2B";
+
+"Level 21" = "eeeW\neeWeW\neeeW\n\n\n\n\n\n\nee7G8\neeBeR\nee2G7";
+
+"Level 22" = "\neeeeeW\neeeeW\neeeWee\neeW\neWeeee8\n\neeeeee6\n\neReeee7\neeB\neeeGee6\neeeeR\neeeeeB7";
+
+"Level 23" = "eWWWWW\neWeeeW\n\n\n\neee2\ne3eee2\neee\n\n\neR323R\neGeeeG\neeReR\nreeG";
