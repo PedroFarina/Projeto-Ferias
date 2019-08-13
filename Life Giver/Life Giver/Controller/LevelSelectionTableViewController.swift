@@ -20,7 +20,7 @@ public class LevelSelectionTableViewController : UITableViewController, LevelFin
     }
     
     public func reloadData(){
-        levels = ModelController.shared().getLevels()
+        levels = ModelController.shared().getLevels().reversed()
         tableView.reloadData()
     }
     
@@ -36,11 +36,8 @@ public class LevelSelectionTableViewController : UITableViewController, LevelFin
         if count != levels.count{
             count += 1
         }
-        #if DEBUG
-        return levels.count
-        #else
+        
         return count
-        #endif
     }
     
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {var cell:UITableViewCell = UITableViewCell()

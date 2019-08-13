@@ -131,10 +131,11 @@ extension DynamicAnimatorController{
                 let ap = Apple(image: UIImage(named: GeneralProperties.blueApplePath))
                 ap.value = GeneralProperties.blueAppleValue
                 (object as! GlassWithApple).setApple(ap, deviceSize: view.frame.size)
-            //object = Glass(image: UIImage(named: GeneralProperties.glassBreakingPath))
-            //case "9":
-                //object = Glass(image: UIImage(named: GeneralProperties.glassBrokenPath))
-            case "\n", "n":
+            case "9":
+                object = Glass(image: UIImage(named: GeneralProperties.glassBrokenPath))
+                (object as! Glass).value += 2
+                size = Glass.dimensions
+            case "\n":
                 multiplier.y += 1
                 multiplier.x = 0
                 object = nil
